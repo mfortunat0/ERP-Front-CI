@@ -4,17 +4,19 @@ import { Modal } from "@/components/modal";
 import noPhoto from "@/assets/no-photo-available.jpg";
 import style from "./index.module.css";
 
-interface ModalPhoto {
+interface ModalLocal {
   visibility: boolean;
   selectedItem: Product | undefined;
+  codfir: string | null;
   setVisibility: (visibility: boolean) => void;
 }
 
-export function ModalPhoto({
+export function ModalLocal({
   selectedItem,
   setVisibility,
   visibility,
-}: ModalPhoto) {
+  codfir,
+}: ModalLocal) {
   return (
     <Modal
       visibility={visibility}
@@ -31,10 +33,9 @@ export function ModalPhoto({
         </button>
         <div className={style.content}>
           <img
-            src={`http://192.168.100.100:9060/fotos/P${selectedItem?.CODPRO.replace(
-              ".",
-              ""
-            )}.jpg?v=${Date.now()}`}
+            src={`http://192.168.100.100:9060/fotos/localizacao/${codfir}/${
+              selectedItem?.LOCAL
+            }.jpg?v=${Date.now()}`}
             onError={(event) =>
               ((event.target as HTMLImageElement).src = noPhoto)
             }

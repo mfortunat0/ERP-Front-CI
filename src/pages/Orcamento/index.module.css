@@ -24,7 +24,7 @@
 
 .right {
   margin-top: 44px;
-  border-radius: 2px;
+  border-radius: 4px;
   height: 100%;
 }
 
@@ -35,7 +35,7 @@
   justify-content: space-between;
   flex-direction: column;
   box-shadow: 0px 0px 4px var(--primary-blue);
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: var(--primary-blue);
   height: 56vh;
   min-height: 56vh;
@@ -69,7 +69,7 @@
   overflow-y: scroll;
   width: 100%;
   padding: 8px;
-  border-radius: 2px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -109,7 +109,7 @@ ul::-webkit-scrollbar-thumb:hover {
   width: 100%;
   cursor: pointer;
   transition: background-color 0.2s;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .carrinho ul li:hover {
@@ -151,7 +151,7 @@ ul::-webkit-scrollbar-thumb:hover {
   align-items: center;
   background-color: var(--primary-blue);
   box-shadow: 0px 0px 4px var(--primary-blue);
-  border-radius: 2px;
+  border-radius: 4px;
   width: 100%;
   padding: 8px;
   z-index: 2;
@@ -207,7 +207,7 @@ ul::-webkit-scrollbar-thumb:hover {
   gap: 8px;
   background-color: var(--primary-blue);
   box-shadow: 0px 0px 4px var(--primary-blue);
-  border-radius: 2px;
+  border-radius: 4px;
   width: 100%;
   padding: 8px;
 }
@@ -227,7 +227,7 @@ ul::-webkit-scrollbar-thumb:hover {
   font-weight: 900;
   color: var(--primary-red);
   padding: 6px;
-  border-radius: 2px;
+  border-radius: 4px;
   min-height: 12vh;
 }
 
@@ -277,7 +277,7 @@ ul::-webkit-scrollbar-thumb:hover {
   outline: none;
   border: none;
   padding: 4px;
-  border-radius: 2px;
+  border-radius: 4px;
   text-align: end;
 }
 
@@ -611,6 +611,11 @@ ul::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
+.right .fichaAnalitica div:last-child {
+  justify-content: center;
+  gap: 16px;
+}
+
 .right .fichaAnaliticaButton {
   position: absolute;
   right: 16px;
@@ -741,53 +746,8 @@ ul::-webkit-scrollbar-thumb:hover {
   border-radius: 4px;
 }
 
-@media (max-height: 600px) {
-  .OrcamentoContainer {
-    height: 70vh;
-  }
-}
-
-@media (max-width: 1023px) {
-  .left {
-    width: 40%;
-  }
-
-  .left footer {
-    gap: 4px;
-  }
-
-  .left ul {
-    min-height: 50%;
-    max-height: 50%;
-  }
-
-  .center {
-    width: 55%;
-  }
-}
-
-@media (max-width: 800px) {
-  .OrcamentoContainer {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .left {
-    order: 2;
-    width: 80%;
-    max-width: 400px;
-    height: 50vh;
-  }
-
-  .center {
-    width: 100%;
-    max-width: 520px;
-    padding: 4px;
-  }
-
-  .center footer {
-    max-height: 22vh;
-    min-height: 22vh;
-    height: 22vh;
+@media (max-width: 1024px) {
+  .carrinho .buttonsContainer button:last-child {
+    width: 60%;
   }
 }

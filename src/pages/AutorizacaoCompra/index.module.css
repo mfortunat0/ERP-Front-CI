@@ -31,6 +31,11 @@
   height: 8vh;
 }
 
+.consultaFirmasContainer > form button {
+  min-height: 40px;
+  max-height: 40px;
+}
+
 .consultaFirmasContainer > form input {
   width: 90%;
   height: 42px;
@@ -118,13 +123,6 @@
   height: 60%;
 }
 
-.consultaFirmasContainer footer textarea {
-  resize: none;
-  width: 100%;
-  height: 40%;
-  padding: 8px;
-}
-
 .consultaFirmasContainer footer div {
   display: flex;
   flex-direction: column;
@@ -156,12 +154,13 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  min-width: 380px;
   gap: 16px;
   align-items: center;
 }
 
 .consultaFirmasContainer footer form p {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .consultaFirmasContainer footer form input {
@@ -169,7 +168,7 @@
   border: 1px solid var(--primary-blue);
   padding-left: 8px;
   outline: none;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .consultaFirmasContainer footer form div {
@@ -181,9 +180,48 @@
 
 .consultaFirmasContainer footer textarea {
   width: 50%;
-  height: 60px;
+  min-width: 280px;
+  height: 74px;
   border: 1px solid var(--primary-blue);
   padding-left: 8px;
   outline: none;
-  border-radius: 2px;
+  resize: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .tableWrapper .tableFixHead td:nth-child(3),
+  .tableWrapper .tableFixHead th:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 732px) {
+  .tableWrapper .tableFixHead td:nth-child(1),
+  .tableWrapper .tableFixHead th:nth-child(1) {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .consultaFirmasContainer th,
+  .consultaFirmasContainer td {
+    font-size: 14px;
+  }
+
+  .consultaFirmasContainer h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .consultaFirmasContainer h2 {
+    font-size: 16px;
+  }
+
+  .consultaFirmasContainer th,
+  .consultaFirmasContainer td {
+    font-size: 12px;
+  }
 }

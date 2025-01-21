@@ -1,7 +1,13 @@
 import style from "./index.module.css";
 import noPhoto from "@/assets/no-photo-available.jpg";
 import copy from "copy-to-clipboard";
-import { FaCopy, FaEraser, FaMagnifyingGlass, FaX } from "react-icons/fa6";
+import {
+  FaCopy,
+  FaEraser,
+  FaFileExport,
+  FaMagnifyingGlass,
+  FaX,
+} from "react-icons/fa6";
 import { BalanceProductResponse, Product } from "@/interfaces";
 import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
 import { formatDate } from "@/utils/formats";
@@ -13,13 +19,14 @@ import { ModalSelectedProductMobile } from "../../components/modalSelectedProduc
 import { ModalPhoto } from "@/components/modalPhoto";
 import { blurAllInputs } from "@/utils/blurInputs";
 import { ModalInserFalta } from "@/components/modalInsertFalta";
+import { CardItem } from "@/components/cardItem";
+import { ModalLocal } from "@/components/modalLocal";
 import {
   toastClear,
   toastError,
   toastPromise,
   toastSuccess,
 } from "@/utils/toast";
-import { CardItem } from "@/components/cardItem";
 
 export function ConsultaProdutos() {
   const user = localStorage.getItem("user")?.split("-")[0];
@@ -34,9 +41,9 @@ export function ConsultaProdutos() {
   const [inputTextSearch, setInputTextSearch] = useState("");
   const [selectedProduto, setSelectedProduto] = useState<Product | undefined>();
   const [isLoading, setIsLoading] = useState(false);
-  // const [urlPhoto, setUrlPhoto] = useState("");
-  const [modalPhotoVisibility, setModalPhotoVisibility] = useState(false);
   const [selectedItemFalta, setSelectedItemFalta] = useState<Product>();
+  const [modalLocalVisibility, setModalLocalVisibility] = useState(false);
+  const [modalPhotoVisibility, setModalPhotoVisibility] = useState(false);
   const [modalFaltaVisibility, setModalFaltaVisibility] = useState(false);
   const [modalMezaninoVisibility, setModalMezaninoVisibility] = useState(false);
   const [modalSelectedProdutoVisibility, setModalSelectedProdutoVisibility] =
@@ -409,7 +416,9 @@ export function ConsultaProdutos() {
             </button>
             {(user === "LARISSA" || user === "ALLAN") && (
               <Link to="/autorizacaoCompra">
-                <button>Autorização Compra</button>
+                <button>
+                  <FaFileExport />
+                </button>
               </Link>
             )}
           </form>
@@ -442,10 +451,15 @@ export function ConsultaProdutos() {
             visibility={modalMezaninoVisibility}
           />
           <ModalPhoto
-            codfir={codfir}
             selectedItem={selectedProduto}
             setVisibility={setModalPhotoVisibility}
             visibility={modalPhotoVisibility}
+          />
+          <ModalLocal
+            codfir={codfir}
+            selectedItem={selectedProduto}
+            setVisibility={setModalLocalVisibility}
+            visibility={modalLocalVisibility}
           />
           <form>
             <input
@@ -462,7 +476,9 @@ export function ConsultaProdutos() {
             </button>
             {(user === "LARISSA" || user === "ALLAN") && (
               <Link to="/autorizacaoCompra">
-                <button>Autorização Compra</button>
+                <button>
+                  <FaFileExport />
+                </button>
               </Link>
             )}
           </form>
@@ -496,7 +512,11 @@ export function ConsultaProdutos() {
                   {produtos.map((produto) => (
                     <tr
                       key={produto.CODPRO}
-                      onClick={() => onSelectedProduct(produto)}
+                      onClick={() => {
+                        if (selectedProduto !== produto) {
+                          onSelectedProduct(produto);
+                        }
+                      }}
                       className={
                         produto.CODPRO === selectedProduto?.CODPRO
                           ? style.consultaProdutosActiveRow
@@ -527,6 +547,7 @@ export function ConsultaProdutos() {
                         <td>
                           <button
                             onClick={() => {
+                              toastClear();
                               copy(formatProductToClipBoard(produto));
                               toastSuccess({ message: "Copiado" });
                             }}
@@ -616,37 +637,30 @@ export function ConsultaProdutos() {
                   src={`http://192.168.100.100:9060/fotos/P${selectedProduto?.CODPRO.replace(
                     ".",
                     ""
-                  )}.jpg`}
+                  )}.jpg?v=${Date.now()}`}
                   onError={(event) =>
                     ((event.target as HTMLImageElement).src = noPhoto)
                   }
                   alt="produto"
-                  // onClick={() => {
-                  //   setUrlPhoto(
-                  //     `http://192.168.100.100:9060/fotos/P${selectedProduto?.CODPRO.replace(
-                  //       ".",
-                  //       ""
-                  //     )}.jpg`
-                  //   );
-                  //   setModalPhotoVisibility(true);
-                  // }}
+                  onClick={() => {
+                    setModalPhotoVisibility(true);
+                  }}
                 />
               </div>
               <div>
                 <h1>Localização </h1>
 
                 <img
-                  src={`http://192.168.100.100:9060/fotos/localizacao/${codfir}/${selectedProduto?.LOCAL}.jpg`}
+                  src={`http://192.168.100.100:9060/fotos/localizacao/${codfir}/${
+                    selectedProduto?.LOCAL
+                  }.jpg?v=${Date.now()}`}
                   alt="Localizacao"
                   onError={(event) =>
                     ((event.target as HTMLImageElement).src = noPhoto)
                   }
-                  // onClick={() => {
-                  //   setUrlPhoto(
-                  //     `http://192.168.100.100:9060/fotos/localizacao/${codfir}/${selectedProduto?.LOCAL}.jpg`
-                  //   );
-                  //   setModalPhotoVisibility(true);
-                  // }}
+                  onClick={() => {
+                    setModalLocalVisibility(true);
+                  }}
                 />
                 <h4>{selectedProduto.LOCAL}</h4>
               </div>

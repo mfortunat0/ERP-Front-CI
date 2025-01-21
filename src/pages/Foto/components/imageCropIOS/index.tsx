@@ -96,6 +96,7 @@ export function ImageCropIOS({
               toastSuccess({ message: "Imagem salva com sucesso" });
               setProductSelected(undefined);
             } catch (error) {
+              console.log(error);
               setModalVisibility(true);
             }
           }
@@ -113,7 +114,7 @@ export function ImageCropIOS({
           src={`http://192.168.100.100:9060/fotos/P${productSelected.CODPRO.replace(
             ".",
             ""
-          )}.jpg`}
+          )}.jpg?v=${Date.now()}`}
           onError={(event) =>
             ((event.target as HTMLImageElement).src = noPhoto)
           }

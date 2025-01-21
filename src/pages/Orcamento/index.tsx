@@ -845,7 +845,7 @@ export function Orcamento() {
                     src={`http://192.168.100.100:9060/fotos/P${produto.CODPRO.replace(
                       ".",
                       ""
-                    )}.jpg`}
+                    )}.jpg?v=${Date.now()}`}
                     onError={(event) =>
                       ((event.target as HTMLImageElement).src = noPhoto)
                     }
@@ -917,7 +917,7 @@ export function Orcamento() {
                   src={`http://192.168.100.100:9060/fotos/P${complementar.CODPRO.replace(
                     ".",
                     ""
-                  )}.jpg`}
+                  )}.jpg?v=${Date.now()}`}
                   onError={(event) =>
                     ((event.target as HTMLImageElement).src = noPhoto)
                   }
@@ -971,7 +971,7 @@ export function Orcamento() {
               src={`http://192.168.100.100:9060/fotos/P${selectedProduto.CODPRO.replace(
                 ".",
                 ""
-              )}.jpg`}
+              )}.jpg?v=${Date.now()}`}
               onError={(event) =>
                 ((event.target as HTMLImageElement).src = noPhoto)
               }
@@ -1004,7 +1004,7 @@ export function Orcamento() {
                   src={`http://192.168.100.100:9060/fotos/P${produtoSemelhante?.CODPRO.replace(
                     ".",
                     ""
-                  )}.jpg`}
+                  )}.jpg?v=${Date.now()}`}
                   onError={(event) =>
                     ((event.target as HTMLImageElement).src = noPhoto)
                   }
@@ -1096,7 +1096,6 @@ export function Orcamento() {
                   <button onClick={() => setVisibilityModalMezanino(true)}>
                     Solicitar Mezanino
                   </button>
-                  <button className="dangerButton">Saldo Errado</button>
                   <button className="dangerButton">Falta</button>
                 </div>
               </div>

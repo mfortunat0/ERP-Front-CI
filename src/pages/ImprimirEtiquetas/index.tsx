@@ -389,7 +389,7 @@ export function ImprimirEtiquetas() {
             const vrVenda = await getValorVenda(listDetails[id].CODPRO);
             const imgSrc = `http://192.168.100.100:9060/fotos/P${listDetails[
               id
-            ].CODPRO.replace(".", "")}.jpg`;
+            ].CODPRO.replace(".", "")}.jpg?v=${Date.now()}`;
 
             const codpro = listDetails[id].CODPRO;
             const svgId = `P${listDetails[id].CODPRO.replace(".", "")}`;

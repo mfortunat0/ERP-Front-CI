@@ -8,7 +8,7 @@ import { ciAxios } from "@/utils/ciAxios";
 import { toastPromise } from "@/utils/toast";
 import { ListType } from "./interfaces";
 import { ListItem } from "@/interfaces";
-import { ModalPhoto } from "@/components/modalPhoto";
+import { ModalPhotoLocal } from "@/components/modalPhotoLocal";
 
 export function ConsultaListasAbastecimento() {
   const navigate = useNavigate();
@@ -87,7 +87,7 @@ export function ConsultaListasAbastecimento() {
 
   return (
     <section className={style.listasAbastecimentoContainer}>
-      <ModalPhoto
+      <ModalPhotoLocal
         codfir={codfir}
         selectedItem={selectedItem}
         setVisibility={setModalVisibility}

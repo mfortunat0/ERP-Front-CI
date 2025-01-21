@@ -193,6 +193,7 @@ export default function ImageCrop({
 
             setProductSelected(undefined);
           } catch (error) {
+            console.log(error);
             setModalVisibility(true);
           }
         }
@@ -244,7 +245,7 @@ export default function ImageCrop({
           src={`http://192.168.100.100:9060/fotos/P${productSelected.CODPRO.replace(
             ".",
             ""
-          )}.jpg`}
+          )}.jpg?v=${Date.now()}`}
           onError={(event) =>
             ((event.target as HTMLImageElement).src = noPhoto)
           }
@@ -273,7 +274,8 @@ export default function ImageCrop({
         <ReactCrop
           crop={crop}
           onChange={(_, percentCrop) => {
-            setCrop(percentCrop), setSendButtonText("Enviar recorte");
+            setCrop(percentCrop);
+            setSendButtonText("Enviar recorte");
           }}
           onComplete={(c) => setCompletedCrop(c)}
           aspect={aspect}

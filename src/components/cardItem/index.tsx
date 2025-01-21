@@ -23,7 +23,7 @@ export function CardItem({ product, onSelectedProduct }: CardItemProps) {
           src={`http://192.168.100.100:9060/fotos/P${CODPRO.replace(
             ".",
             ""
-          )}.jpg`}
+          )}.jpg?v=${Date.now()}`}
           onError={(event) =>
             ((event.target as HTMLImageElement).src = noPhoto)
           }
@@ -33,23 +33,33 @@ export function CardItem({ product, onSelectedProduct }: CardItemProps) {
       <div className={style.cardContent}>
         <h3>{DESCR}</h3>
         <p>
-          {CODPRO} <b>{CODUNI}</b>
+          <b>{CODPRO}</b>
         </p>
-        <p>Preço: R$ {VRVENDA.toFixed(2).toString().replace(".", ",")}</p>
-        <p>Saldo: {SALDO || 0}</p>
-        <p>VR Venda: R$ {VRVENDA.toFixed(2).toString().replace(".", ",")}</p>
-        <p>VR Atacado: R$ {VRATAC?.toFixed(2).toString().replace(".", ",")}</p>
+        <p>
+          <b>Preço:</b> R$ {VRVENDA.toFixed(2).toString().replace(".", ",")}
+        </p>
+        <p>
+          <b>Atacado:</b> R$ {VRATAC?.toFixed(2).toString().replace(".", ",")}
+        </p>
+        <p>
+          <b>Saldo:</b> {SALDO || 0}
+          {CODUNI?.toLocaleLowerCase()}
+        </p>
         {(user === "GIL" || user === "PAULO") && (
           <>
             <p>
-              VR Custo: R$ {VRCUSTO?.toFixed(2).toString().replace(".", ",")}
+              <b>Custo:</b> R${" "}
+              {VRCUSTO?.toFixed(2).toString().replace(".", ",")}
             </p>
             <p>
-              Margem: {((VRVENDA / (VRCUSTO || 0) - 1) * 100 || 0).toFixed(2)}
+              <b>Margem:</b>{" "}
+              {((VRVENDA / (VRCUSTO || 0) - 1) * 100 || 0).toFixed(2)}%
             </p>
           </>
         )}
-        <p>Familia: {FAMILIA}</p>
+        <p>
+          <b>Familia:</b> {FAMILIA}
+        </p>
         <div>
           <span>Local {LOCAL || "Não registrado"}</span>
         </div>

@@ -56,8 +56,8 @@ export function ModalMezanino({
     <Modal
       visibility={visibility}
       setVisibility={setVisibility}
-      viewWidth={20}
-      viewHeight={40}
+      viewHeight={window.innerWidth > 800 ? 44 : 45}
+      viewWidth={window.innerWidth > 800 ? 24 : 60}
     >
       <button
         className="dangerButton rightButton"

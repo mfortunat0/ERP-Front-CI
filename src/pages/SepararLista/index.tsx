@@ -4,7 +4,7 @@ import { FaCheck, FaMagnifyingGlass, FaX } from "react-icons/fa6";
 import { ciAxios } from "@/utils/ciAxios";
 import { toastPromise } from "@/utils/toast";
 import { Product } from "@/interfaces";
-import { ModalPhoto } from "@/components/modalPhoto";
+import { ModalPhotoLocal } from "@/components/modalPhotoLocal";
 import { ModalInserFalta } from "@/components/modalInsertFalta";
 import { blurAllInputs } from "@/utils/blurInputs";
 import style from "./index.module.css";
@@ -109,7 +109,7 @@ export function SepararLista() {
     <>
       <section className={style.separarListaContainer}>
         <h1>Separar Lista</h1>
-        <ModalPhoto
+        <ModalPhotoLocal
           codfir={codfir}
           selectedItem={selectedItem}
           setVisibility={setModalPhotoVisibility}
@@ -232,7 +232,7 @@ export function SepararLista() {
                             src={`http://192.168.100.100:9060/fotos/P${item.CODPRO.replace(
                               ".",
                               ""
-                            )}.jpg`}
+                            )}.jpg?v=${Date.now()}`}
                             onError={(event) =>
                               ((event.target as HTMLImageElement).src = noPhoto)
                             }

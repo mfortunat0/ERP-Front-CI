@@ -1,4 +1,4 @@
-import { Product, ProductList } from "../../../../interfaces";
+import { Product, ProductList } from "@/interfaces";
 import noPhoto from "../../../../assets/no-photo-available.jpg";
 
 interface CardItemProps {
@@ -37,7 +37,7 @@ export default function CardItem({
             src={`http://192.168.100.100:9060/fotos/P${CODPRO.replace(
               ".",
               ""
-            )}.jpg`}
+            )}.jpg?v=${Date.now()}`}
             onError={(event) =>
               ((event.target as HTMLImageElement).src = noPhoto)
             }

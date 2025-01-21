@@ -1,5 +1,5 @@
 import style from "./index.module.css";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaAngleLeft, FaMagnifyingGlass } from "react-icons/fa6";
 import { Firma } from "../../interfaces";
 import { ChangeEvent, FormEvent, KeyboardEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -187,7 +187,9 @@ export function AutorizacaoCompra() {
             <FaMagnifyingGlass />
           </button>
           <Link to="/consultaProdutos">
-            <button>Consulta produtos</button>
+            <button>
+              <FaAngleLeft />
+            </button>
           </Link>
         </form>
         {firmas.length > 0 && (

@@ -248,7 +248,7 @@ export function Avaliacao() {
         },
       });
     } catch (error) {
-      toastError({ message: "Erro ao tentar comunicar com servidor" });
+      toastError({ message: `Erro ao tentar comunicar com servidor ${error}` });
     }
   };
 
@@ -470,7 +470,7 @@ export function Avaliacao() {
         toastError({ message: error });
       }
     } catch (error) {
-      toastError({ message: "Erro ao tentar comunicar com servidor" });
+      toastError({ message: `Erro ao tentar comunicar com servidor ${error}` });
     }
   };
 
