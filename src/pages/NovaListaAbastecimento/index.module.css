@@ -1,0 +1,128 @@
+.listaAbastecimentoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98%;
+  margin-top: 52px;
+  padding: 4px;
+}
+
+.listaAbastecimentoContainer h2 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}
+
+.listaAbastecimentoContainer h1 {
+  font-family: "MarkerFelt";
+  font-weight: 100;
+  color: var(--primary-blue);
+}
+
+.listaAbastecimentoContainer .floatingButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  padding: 22px 14px 22px 14px;
+  font-size: 32px;
+  cursor: pointer;
+  max-height: 60px;
+  max-width: 60px;
+}
+
+.cadastroProdutoListTitle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 16px;
+  margin-top: 26px;
+}
+
+.listaAbastecimentoformContainer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+}
+
+.listaAbastecimentoInsertContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  margin-top: 24px;
+}
+
+.listaAbastecimentoformContainer input,
+.listaAbastecimentoInsertContainer input {
+  height: 42px;
+  width: 80%;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.listaAbastecimentoCardsContainer {
+  display: flex;
+  flex-direction: column;
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 540px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.listaAbastecimentoCardsContainer button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.listaAbastecimentoContainer footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+  background-color: #fff;
+}
+
+.listaAbastecimentoContainer table {
+  width: 100%;
+  padding: 8px;
+  border-collapse: collapse;
+  border: 1px solid var(--primary-blue);
+}
+
+.novoCadastroTableContainer {
+  margin-top: 16px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.listaAbastecimentoContainer table td {
+  font-size: 12px;
+  padding: 6px;
+}
+
+.listaAbastecimentoContainer table tr:nth-child(even) {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.listaAbastecimentoContainer table tr:nth-child(even) button {
+  background-color: var(--primary-white);
+}
+
+.listaAbastecimentoContainer table tr:nth-child(even) button svg {
+  fill: var(--primary-blue);
+}

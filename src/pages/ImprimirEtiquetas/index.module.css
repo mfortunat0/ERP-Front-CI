@@ -1,0 +1,112 @@
+.imprimirEtiquetasContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 52px;
+  padding: 0 4px 0 4px;
+}
+
+.imprimirEtiquetasContainer h2 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}
+
+.imprimirEtiquetasContainer h1 {
+  font-weight: 900;
+  color: var(--primary-blue);
+  width: 100%;
+  text-align: center;
+  border-top: 4px solid var(--primary-blue);
+  padding: 16px 0 16px 0;
+  background-color: #ffffff;
+}
+
+.imprimirEtiquetasContainer table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.tableWrapper {
+  overflow-y: auto;
+  height: 200px;
+}
+
+.tableWrapper .tableFixHead {
+  overflow: auto;
+  height: 100px;
+}
+
+.tableWrapper .tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--primary-white);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+.imprimirEtiquetasContainer table thead th {
+  padding: 6px 4px 6px 4px;
+  text-align: start;
+  color: var(--primary-white);
+  background-color: var(--primary-blue);
+}
+
+.imprimirEtiquetasContainer table tbody td {
+  padding: 8px 4px 8px 4px;
+}
+
+.imprimirEtiquetasContainer table tbody td:last-child,
+.imprimirEtiquetasContainer table thead th:last-child {
+  text-align: center;
+}
+
+.imprimirEtiquetasContainer table tbody tr {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.imprimirEtiquetasContainer table tbody tr:hover {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.imprimirEtiquetasContainer div {
+  width: 100%;
+}
+
+.imprimirEtiquetasContainer footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  min-width: 420px;
+  margin-top: 8px;
+}
+
+.imprimirEtiquetasContainer footer select {
+  height: 42px;
+  border: 1px solid var(--secondary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}

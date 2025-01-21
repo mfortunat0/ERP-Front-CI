@@ -1,0 +1,44 @@
+.captureContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 15%;
+  height: 90%;
+  max-width: 460px;
+}
+
+.captureContainer button {
+  width: 100%;
+}
+
+.captureContainer video {
+  width: 100%;
+  margin-bottom: -14%;
+  margin-top: 8%;
+  z-index: -999;
+}
+
+.containerInputFile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerInputFile label {
+  width: 100%;
+  text-align: center;
+}
+
+.containerInputFile input {
+  width: 500px;
+  height: 500px;
+}
+
+@media (min-width: 1024px) {
+  .containerInputFile:first-child {
+    display: none;
+  }
+}

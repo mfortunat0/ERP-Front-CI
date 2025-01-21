@@ -1,0 +1,62 @@
+.avaliacaoOptions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.avaliacaoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 52px;
+}
+
+.avaliacaoContainer > h2 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}
+
+.avaliacaoOptions select {
+  height: 36px;
+  width: 45%;
+  border: 1px solid var(--secondary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+.avaliacaoContainer footer {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+  justify-content: space-between;
+}
+
+.avaliacaoContainer footer button {
+  height: 44px;
+}
+
+.avaliacaoContainer footer input {
+  height: 36px;
+  width: 50%;
+  max-width: 240px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.avaliacaoContainer .backupFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}

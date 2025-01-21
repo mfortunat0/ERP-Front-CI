@@ -1,0 +1,13 @@
+.modalFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.modalFooter button {
+  width: 80%;
+  max-width: 220px;
+}

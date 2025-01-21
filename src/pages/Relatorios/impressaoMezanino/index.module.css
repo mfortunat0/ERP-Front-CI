@@ -1,0 +1,79 @@
+.relatorioImpressaoMezanino {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 86px;
+  gap: 8px;
+}
+
+.relatorioImpressaoMezanino input,
+.relatorioImpressaoMezanino select {
+  padding: 0 8px 0 8px;
+  border: 1px solid var(--primary-blue);
+  border-radius: 4px;
+  min-width: 90px;
+  max-width: 90px;
+  margin-top: 8px;
+  height: 40px;
+  outline: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.relatorioImpressaoMezanino select {
+  min-width: 100%;
+}
+
+.relatorioImpressaoMezanino div {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary-blue);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.relatorioImpressaoMezanino div label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.relatorioImpressaoMezanino div button {
+  background-color: var(--primary-white);
+  color: var(--primary-blue);
+}
+
+.relatorioImpressaoMezanino div button svg {
+  fill: var(--primary-blue);
+}
+
+.relatorioImpressaoMezanino table {
+  width: 400px;
+  border-collapse: collapse;
+}
+
+.relatorioImpressaoMezanino table th {
+  text-align: left;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  padding: 4px 8px;
+}
+
+.relatorioImpressaoMezanino table td {
+  padding: 4px 8px;
+}
+
+.relatorioImpressaoMezanino table td:nth-child(2),
+.relatorioImpressaoMezanino table th:nth-child(2) {
+  text-align: center;
+  padding: 4px;
+}
+
+.relatorioImpressaoMezanino table tr:nth-child(even) {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}

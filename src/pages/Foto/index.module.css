@@ -1,0 +1,41 @@
+.fotoContainer {
+  margin-top: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonDanger {
+  background-color: #be2525;
+  width: 100%;
+}
+
+.fotoFooterContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  width: 100%;
+  max-width: 460px;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.fotoContainer h2 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}

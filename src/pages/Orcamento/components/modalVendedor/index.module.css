@@ -1,0 +1,82 @@
+.modalForm {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin-bottom: 8px;
+  justify-content: center;
+}
+
+.modalForm input {
+  height: 36px;
+  width: 50%;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.modalVendedor table td:first-child {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-y: auto;
+  height: 38vh;
+  background-color: #fff;
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--primary-white);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+.tableWrapper .tableFixHead {
+  overflow: auto;
+  height: 100px;
+}
+
+.tableWrapper .tableFixHead thead th {
+  background-color: var(--primary-blue);
+  position: sticky;
+  top: -2px;
+  color: var(--primary-white);
+}
+
+.tableWrapper .tableFixHead {
+  border-collapse: collapse;
+  overflow: auto;
+  height: 100px;
+  width: 100%;
+}
+
+.tableFixHead th {
+  font-size: 18px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.tableFixHead td {
+  cursor: pointer;
+}
+
+.tableFixHead th,
+.tableFixHead td {
+  padding: 4px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: inherit;
+}

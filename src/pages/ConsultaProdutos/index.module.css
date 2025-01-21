@@ -1,0 +1,280 @@
+.consultaProdutosContainerDesktop,
+.consultaProdutosContainerMobile {
+  margin-top: 52px;
+  padding: 0 4px 0 4px;
+  align-items: center;
+}
+
+.consultaProdutosContainerMobile input,
+.consultaProdutosContainerDesktop input {
+  max-width: 220px;
+}
+
+.consultaProdutosContainerMobile h2,
+.consultaProdutosContainerDesktop h2 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}
+
+.consultaProdutosContainerMobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.consultaProdutosContainerMobile form {
+  display: flex;
+  width: 90%;
+  gap: 4px;
+  margin-bottom: 8px;
+  max-width: 460px;
+  height: 8vh;
+  justify-content: center;
+}
+
+.consultaProdutosContainerMobile form input {
+  width: 90%;
+  height: 42px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.consultaProdutosContainerMobile button {
+  min-height: 42px;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  max-width: 640px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.cardsContainer > div {
+  display: flex;
+  justify-content: center;
+}
+
+.modalLittleDialog div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.modalLittleDialog div button {
+  height: 30%;
+  width: 100%;
+}
+
+.modalConsultaProdutoLocalImage {
+  display: flex;
+  margin-top: 16px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.modalConsultaProdutoLocalImage img {
+  width: 90%;
+}
+
+.consultaProdutosContainerDesktop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.consultaProdutosContainerDesktop > div {
+  display: flex;
+  width: 100%;
+}
+
+.consultaProdutosContainerDesktop form {
+  display: flex;
+  width: 100%;
+  gap: 4px;
+  margin-bottom: 8px;
+  max-width: 460px;
+  height: 8vh;
+  justify-content: center;
+}
+
+.consultaProdutosContainerDesktop form input {
+  width: 90%;
+  height: 42px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.consultaProdutosContainerDesktop table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  overflow-y: auto;
+  max-height: 50px;
+  height: 50px;
+}
+
+.consultaProdutosContainerDesktop th,
+.consultaProdutosContainerDesktop td {
+  padding: 4px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.consultaProdutosContainerDesktop table td:nth-child(6),
+.consultaProdutosContainerDesktop table td:nth-child(3) {
+  text-align: center;
+}
+
+.consultaProdutosContainerDesktop table th:nth-child(6),
+.consultaProdutosContainerDesktop table th:nth-child(3) {
+  text-align: center;
+}
+
+.consultaProdutosContainerDesktop th {
+  font-size: 18px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.tableWrapper {
+  overflow-y: auto;
+  height: 248px;
+  background-color: #fff;
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--primary-white);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+.tableWrapper .tableFixHead {
+  overflow: auto;
+  height: 100px;
+}
+
+.tableWrapper .tableFixHead thead th {
+  background-color: var(--primary-blue);
+  position: sticky;
+  color: var(--primary-white);
+  transition: background-color 0.3s;
+  top: 0;
+}
+
+.tableWrapper .tableFixHead thead th:hover {
+  background-color: var(--primary-white);
+  color: var(--primary-blue);
+}
+
+.consultaProdutosContainerDesktop footer {
+  display: flex;
+  padding-top: 8px;
+  gap: 44px;
+  overflow-x: hidden;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.consultaProdutosContainerDesktop footer img {
+  width: 70%;
+  height: 60%;
+}
+
+.consultaProdutosContainerDesktop footer textarea {
+  resize: none;
+  width: 100%;
+  height: 40%;
+  padding: 8px;
+}
+
+.consultaProdutosContainerDesktop footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 20%;
+  max-height: 208px;
+}
+
+.consultaProdutosActiveRow {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.consultaProdutosContainerDesktop .modalFalta {
+  display: flex;
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.modalLittleDialog div .dangerButton {
+  margin-left: 400px !important;
+}
+
+.dialogForm {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 8px;
+  max-width: 460px;
+  height: 8vh;
+}
+
+.dialogForm input {
+  width: 50%;
+  height: 42px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.consultaProdutosContainerDesktop table button {
+  padding: 4px;
+}
+
+@media (min-width: 550px) {
+  .modalLittleDialog div button {
+    font-size: 20px;
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 425px) {
+  .consultaProdutosContainerMobile h2,
+  .consultaProdutosContainerDesktop h2 {
+    font-size: 20px;
+  }
+}

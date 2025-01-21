@@ -1,0 +1,19 @@
+.dialogFormMezanino {
+  gap: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dialogFormMezanino input {
+  width: 50%;
+  height: 42px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}

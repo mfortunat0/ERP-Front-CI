@@ -1,0 +1,247 @@
+.separarListaContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.separarListaContainer h1 {
+  font-family: "MarkerFelt";
+  position: absolute;
+  color: var(--primary-blue);
+  font-weight: 100;
+  top: 8px;
+  left: 12px;
+  font-size: 28px;
+}
+
+.separarListaContainer h2 {
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.separarListaContainer form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.separarListaContainer form input {
+  height: 36px;
+  width: 160px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.separarListaContainer table button {
+  height: 18px;
+  width: 18px;
+  padding: 4px;
+}
+
+.separarListaContainer div h2:nth-child(4),
+.separarListaContainer div h2:nth-child(5) {
+  display: none;
+}
+
+.separarListaContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.separarListaContainer table thead {
+  background-color: var(--primary-blue);
+}
+
+.separarListaContainer table thead th {
+  padding: 6px 4px 6px 4px;
+  text-align: start;
+  color: var(--primary-white);
+  background-color: var(--primary-blue);
+}
+
+.separarListaContainer table tbody tr {
+  border-bottom: 1px solid #666;
+  justify-content: center;
+  align-items: center;
+}
+
+.separarListaContainer table tbody td {
+  padding: 6px;
+}
+
+.separarListaContainer .certo {
+  background-color: var(--primary-green);
+  color: var(--primary-white);
+}
+
+.separarListaContainer .errado {
+  background-color: var(--primary-red);
+  color: var(--primary-white);
+}
+
+.separarListaContainer table thead th,
+.separarListaContainer table tbody td {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.separarListaContainer .tableMobile thead th:nth-child(4),
+.separarListaContainer .tableMobile tbody td:nth-child(4) {
+  min-width: 80px;
+  width: 80px;
+}
+
+.separarListaContainer .insideTable thead th:nth-child(1),
+.separarListaContainer .insideTable tbody td:nth-child(1),
+.separarListaContainer .insideTable thead th:nth-child(4),
+.separarListaContainer .insideTable tbody td:nth-child(4),
+.separarListaContainer .insideTable thead th:nth-child(7),
+.separarListaContainer .insideTable tbody td:nth-child(7) {
+  display: none;
+}
+
+.separarListaContainer table tbody td:nth-child(4),
+.separarListaContainer table thead th:nth-child(4) {
+  display: table-cell;
+}
+
+.separarListaContainer table tbody td,
+.separarListaContainer table thead th {
+  text-align: center;
+}
+
+.separarListaContainer table tbody td:nth-child(3) {
+  text-align: start;
+}
+
+.separarListaContainer table tr {
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.imagesModalContainerConsultasepararLista {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.imagesModalContainerConsultasepararLista div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imagesModalContainerConsultasepararLista img {
+  height: 50% !important;
+  width: 98% !important;
+  border: none !important;
+}
+
+.imagesModalContainerConsultasepararLista img:last-child {
+  height: 35% !important;
+  width: 98% !important;
+  border: none !important;
+}
+
+@media (min-width: 400px) {
+  .separarListaContainer table thead th,
+  .separarListaContainer table tbody td {
+    font-size: 11px;
+  }
+  .separarListaContainer .insideTable thead th:nth-child(1),
+  .separarListaContainer .insideTable tbody td:nth-child(1),
+  .separarListaContainer table thead th:nth-child(5),
+  .separarListaContainer table thead th:nth-child(7),
+  .separarListaContainer table tbody td:nth-child(5),
+  .separarListaContainer table tbody td:nth-child(7) {
+    display: table-cell;
+    text-align: center;
+  }
+}
+
+@media (min-width: 550px) {
+  .separarListaContainer .insideTable tbody td:nth-child(4),
+  .separarListaContainer .insideTable thead th:nth-child(4),
+  .separarListaContainer .insideTable thead th:nth-child(7),
+  .separarListaContainer .insideTable tbody td:nth-child(7) {
+    display: table-cell;
+  }
+
+  .separarListaContainer table button {
+    height: 24px;
+    width: 24px;
+    padding: 4px;
+  }
+
+  .imagesModalContainerConsultasepararLista img {
+    height: 60% !important;
+    width: 90% !important;
+  }
+
+  .imagesModalContainerConsultasepararLista img:last-child {
+    height: 25% !important;
+    width: 60% !important;
+  }
+}
+
+/* Large table */
+.separarListaContainer .tableLarge {
+  display: none;
+}
+
+.separarListaContainer .tableLarge td div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.separarListaContainer .tableLarge td img {
+  width: 100px;
+  height: 100px;
+}
+
+.separarListaContainer .tableLarge button {
+  height: 36px;
+  width: 36px;
+  padding: 4px;
+}
+
+.separarListaContainer .tableLarge thead th,
+.separarListaContainer .tableLarge tbody td {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.separarListaContainer .tableLarge thead th:nth-child(3),
+.separarListaContainer .tableLarge tbody td:nth-child(3) {
+  min-width: 80px;
+}
+
+@media (min-width: 550px) {
+  .modalLittleDialog div button {
+    font-size: 20px;
+    max-height: 80px;
+  }
+}
+
+@media (min-width: 600px) {
+  .separarListaContainer .tableMobile {
+    display: none;
+  }
+  .separarListaContainer .tableLarge {
+    display: table;
+  }
+}

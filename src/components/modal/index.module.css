@@ -1,0 +1,22 @@
+.overlay {
+  width: 100vw;
+  min-width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 8px;
+  background-color: #ffffff;
+  animation: show 0.3s;
+  border-radius: 4px;
+  z-index: 999;
+}

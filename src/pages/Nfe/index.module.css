@@ -1,0 +1,135 @@
+.NfeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 52px;
+  padding: 16px;
+}
+
+.NfeContainer .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 16px;
+  gap: 24px;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.NfeContainer .header div {
+  display: flex;
+  gap: 8px;
+}
+
+.NfeContainer h1 {
+  text-align: center;
+  font-family: "MarkerFelt";
+  font-weight: 300;
+  color: var(--primary-blue);
+}
+
+.NfeContainer form {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  justify-content: center;
+}
+
+.NfeContainer table {
+  margin-top: 24px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.NfeContainer table th {
+  text-align: left;
+}
+
+.NfeContainer table td,
+.NfeContainer table th {
+  padding: 4px 8px 4px 4px;
+}
+
+.NfeContainer .tableListNfes tr:nth-child(even) {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.NfeContainer table tr {
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.NfeContainer table tr button {
+  border: 2px solid var(--primary-white);
+}
+
+.NfeContainer table th:nth-child(3),
+.NfeContainer table th:nth-child(4) {
+  text-align: center;
+}
+
+.NfeContainer table td:nth-child(3),
+.NfeContainer table td:nth-child(4) {
+  text-align: center;
+}
+
+.tableWrapper {
+  overflow-y: auto;
+  height: 58vh;
+  max-height: 560px;
+  width: 100%;
+}
+
+.tableWrapper .tableFixHead {
+  overflow: auto;
+  height: 100px;
+  width: 100%;
+}
+
+.NfeContainer input,
+.NfeContainer select {
+  height: 42px;
+  border: 2px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.NfeContainer form input {
+  min-width: 120px;
+  max-width: 376px;
+}
+
+.NfeContainer form select {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  font-weight: bold;
+}
+
+.modalEan {
+  font-weight: 400;
+  color: #333;
+}
+
+.NfeContainer table input {
+  width: 60px;
+  height: 30px;
+}
+
+.NfeContainer .tableFixHead {
+  overflow: auto;
+  height: 100px;
+}
+
+.NfeContainer .tableFixHead thead th {
+  background-color: var(--primary-white);
+  position: sticky;
+  top: 0;
+}
+
+.NfeContainer .barCodeInput {
+  width: 160px;
+}

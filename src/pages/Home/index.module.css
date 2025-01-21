@@ -1,0 +1,38 @@
+.homeContainer {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.linksContainer {
+  min-width: 340px;
+  max-width: 540px;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.linksContainer a {
+  width: 38%;
+}
+
+.linksContainer button {
+  width: 100%;
+  font-size: 18px;
+  max-height: 100px;
+}
+
+@media (max-width: 540px) {
+  .linksContainer a {
+    width: 43%;
+  }
+
+  .linksContainer button {
+    height: 60px;
+    font-size: 18px;
+  }
+}

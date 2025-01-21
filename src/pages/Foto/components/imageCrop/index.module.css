@@ -1,0 +1,56 @@
+.imageCropContainer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hideCanvas {
+  object-fit: contain;
+  width: 300px;
+  height: 300px;
+  visibility: hidden;
+  z-index: -999;
+  position: fixed;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0 16px 0;
+  width: 100%;
+}
+
+.modalButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+}
+
+.imageCrop {
+  height: 280px;
+  width: 280px;
+  border: 2px solid var(--primary-blue);
+  border-radius: 2px;
+}
+
+@media (min-width: 375px) {
+  .imageCrop {
+    height: 320px;
+    width: 320px;
+  }
+}
+
+@media (min-width: 425px) {
+  .imageCrop {
+    height: 370px;
+    width: 370px;
+  }
+}
+
+@media (min-width: 768px) {
+  .imageCrop {
+    height: 500px;
+    width: 500px;
+  }
+}

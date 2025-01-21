@@ -1,0 +1,59 @@
+.modalHeader {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.modalConsultaProdutoFooter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  overflow-y: auto;
+  max-height: 90%;
+}
+
+.modalConsultaProdutoFooter::-webkit-scrollbar {
+  width: 0px;
+}
+
+.modalConsultaProdutoFooter::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalConsultaProdutoFooter::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.modalConsultaProdutoFooter::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+.modalConsultaProdutoFooter h1 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.modalConsultaProdutoFooter img {
+  margin-top: 16px;
+  width: 98%;
+}
+
+.modalConsultaProdutoFooter table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.modalConsultaProdutoFooter th,
+.modalConsultaProdutoFooter td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  text-align: center;
+}
+
+.modalConsultaProdutoFooter tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
