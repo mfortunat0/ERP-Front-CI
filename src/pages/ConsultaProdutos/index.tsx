@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa6";
 import { BalanceProductResponse, Product } from "@/interfaces";
 import { ChangeEvent, FormEvent, KeyboardEvent, useState } from "react";
-import { formatDate } from "@/utils/formats";
+import { formatDate } from "@/utils/formatDate";
 import { Link } from "react-router-dom";
 import { ciAxios } from "@/utils/ciAxios";
 import { formatProductToClipBoard } from "@/utils/clipboard";
@@ -615,11 +615,12 @@ export function ConsultaProdutos() {
                               .replace(".", ",")}
                           </td>
                           <td>
-                            {" "}
                             {(
-                              (produto.VRVENDA ||
-                                0 / (produto.VRCUSTO || 0) - 1) * 100 || 0
+                              ((produto.VRVENDA || 0) / (produto.VRCUSTO || 0) -
+                                1) *
+                                100 || 0
                             ).toFixed(2)}
+                            %
                           </td>
                         </>
                       )}

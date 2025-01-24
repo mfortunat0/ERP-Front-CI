@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import style from "./index.module.css";
 import noPhoto from "@/assets/no-photo-available.jpg";
-import { formatDate } from "@/utils/formats";
+import { formatDate } from "@/utils/formatDate";
 import {
   BalanceProductResponse,
   BalanceVenda,

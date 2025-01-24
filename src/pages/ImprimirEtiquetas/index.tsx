@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import style from "./index.module.css";
-import { formatDate } from "../../utils/formats";
+import { formatDate } from "../../utils/formatDate";
 import { List, ListItem } from "../../interfaces";
 
 import { FaPrint } from "react-icons/fa6";

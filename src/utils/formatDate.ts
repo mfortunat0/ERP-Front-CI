@@ -29,3 +29,19 @@ export const invertDate = (date: string | Date): string => {
     return "";
   }
 };
+
+export const formatHour = (date: string | Date): string => {
+  if (date && date !== "undefined") {
+    const data = new Date(date);
+    const hour =
+      data.getHours() < 10 ? "0" + data.getHours().toString() : data.getHours();
+    const minute =
+      data.getMinutes() < 10
+        ? "0" + data.getMinutes().toString()
+        : data.getMinutes();
+    const seconds = data.getSeconds();
+    return `${hour}:${minute}:${seconds}`;
+  } else {
+    return "";
+  }
+};

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ciAxios } from "@/utils/ciAxios";
 import style from "./index.module.css";
 import logoUrl from "@/assets/logo.png";
-import { formatDate } from "@/utils/formats";
+import { formatDate } from "@/utils/formatDate";
 import { toastError, toastPromise } from "@/utils/toast";
 
 interface User {

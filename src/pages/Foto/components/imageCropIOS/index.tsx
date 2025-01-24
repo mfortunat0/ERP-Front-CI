@@ -1,11 +1,9 @@
 import style from "./index.module.css";
-import noPhoto from "@/assets/no-photo-available.jpg";
 import { Product } from "@/interfaces";
 import { useState } from "react";
-import { FaBan, FaCheck } from "react-icons/fa6";
 import { ciAxios } from "@/utils/ciAxios";
 import { toastPromise, toastSuccess } from "@/utils/toast";
-import { Modal } from "@/components/modal";
+import { ModalReplacePhoto } from "../modalReplacePhoto";
 
 interface ImageCropIOSProps {
   imageUrl: string;
@@ -108,28 +106,12 @@ export function ImageCropIOS({
 
   return (
     <div className={style.imageCropContainer}>
-      <Modal visibility={modalVisibility} setVisibility={setModalVisibility}>
-        <span>Imagem ja cadastrada no sistema</span>
-        <img
-          src={`http://192.168.100.100:9060/fotos/P${productSelected.CODPRO.replace(
-            ".",
-            ""
-          )}.jpg?v=${Date.now()}`}
-          onError={(event) =>
-            ((event.target as HTMLImageElement).src = noPhoto)
-          }
-          alt="imagem ja cadastrada"
-        />
-        <span>Deseja realmente alterar?</span>
-        <div className={style.modalButtonsContainer}>
-          <button onClick={replacePhotoServer}>
-            <FaCheck />
-          </button>
-          <button className="dangerButton">
-            <FaBan onClick={() => setModalVisibility(false)} />
-          </button>
-        </div>
-      </Modal>
+      <ModalReplacePhoto
+        productSelected={productSelected}
+        setVisibility={setModalVisibility}
+        visibility={modalVisibility}
+        replacePhotoServer={replacePhotoServer}
+      />
       <img
         className={style.imageCrop}
         width={widthFinalImage}

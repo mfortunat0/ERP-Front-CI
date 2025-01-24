@@ -2,26 +2,19 @@ import { useState, useRef } from "react";
 import "react-image-crop/dist/ReactCrop.css";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./index.module.css";
-import noPhoto from "@/assets/no-photo-available.jpg";
 import { canvasPreview } from "./canvasPreview";
 import { useDebounceEffect } from "./useDebounceEffect";
 import { Product } from "@/interfaces";
 import { ciAxios } from "@/utils/ciAxios";
 import { toastPromise, toastSuccess } from "@/utils/toast";
+import { FaCropSimple, FaRotateLeft, FaRotateRight } from "react-icons/fa6";
 import ReactCrop, {
   centerCrop,
   makeAspectCrop,
   Crop,
   PixelCrop,
 } from "react-image-crop";
-import {
-  FaBan,
-  FaCheck,
-  FaCropSimple,
-  FaRotateLeft,
-  FaRotateRight,
-} from "react-icons/fa6";
-import { Modal } from "@/components/modal";
+import { ModalReplacePhoto } from "../modalReplacePhoto";
 
 function centerAspectCrop(
   mediaWidth: number,
@@ -239,29 +232,12 @@ export default function ImageCrop({
 
   return (
     <>
-      <Modal setVisibility={setModalVisibility} visibility={modalVisibility}>
-        <span>Imagem ja cadastrada no sistema</span>
-        <img
-          src={`http://192.168.100.100:9060/fotos/P${productSelected.CODPRO.replace(
-            ".",
-            ""
-          )}.jpg?v=${Date.now()}`}
-          onError={(event) =>
-            ((event.target as HTMLImageElement).src = noPhoto)
-          }
-          alt="imagem ja cadastrada"
-        />
-        <span>Deseja realmente alterar?</span>
-        <div className={style.modalButtonsContainer}>
-          <button onClick={replacePhotoServer}>
-            <FaCheck />
-          </button>
-          <button className="dangerButton">
-            <FaBan onClick={() => setModalVisibility(false)} />
-          </button>
-        </div>
-      </Modal>
-
+      <ModalReplacePhoto
+        productSelected={productSelected}
+        replacePhotoServer={replacePhotoServer}
+        setVisibility={setModalVisibility}
+        visibility={modalVisibility}
+      />
       <div className={style.imageCropContainer}>
         <div className={style.buttonsContainer}>
           <button onClick={minus90Degrees}>

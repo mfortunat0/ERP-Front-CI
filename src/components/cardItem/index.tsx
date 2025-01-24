@@ -9,7 +9,7 @@ interface CardItemProps {
 
 export function CardItem({ product, onSelectedProduct }: CardItemProps) {
   const user = localStorage.getItem("user")?.split("-")[0];
-  const { CODPRO, DESCR, FAMILIA, SALDO, CODUNI, VRATAC, VRCUSTO, LOCAL } =
+  const { CODPRO, DESCR, FAMILIA, SALDO, CODUNI, VRATAC, VRCUSTO, LOCAL, EAN } =
     product;
   const VRVENDA = product.VRVENDA || 0;
 
@@ -59,6 +59,9 @@ export function CardItem({ product, onSelectedProduct }: CardItemProps) {
         )}
         <p>
           <b>Familia:</b> {FAMILIA}
+        </p>
+        <p>
+          <b>{EAN}</b>
         </p>
         <div>
           <span>Local {LOCAL || "Não registrado"}</span>

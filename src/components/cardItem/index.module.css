@@ -17,6 +17,7 @@
 
 .cardImageProfile {
   width: 40%;
+  min-width: 197px;
   display: flex;
   align-items: center;
   justify-content: center;

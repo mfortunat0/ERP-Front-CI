@@ -5,7 +5,7 @@ import { SectionLimpeza } from "./components/sectionLimpeza";
 import { SectionOrganizacao } from "./components/sectionOrganizacao";
 import { SectionPrecificacao } from "./components/sectionPrecificacao";
 import { SectionValidadeProdutos } from "./components/sectionValidadeProdutos";
-import { formatDate } from "../../utils/formats";
+import { formatDate } from "../../utils/formatDate";
 import style from "./index.module.css";
 import { ciAxios } from "../../utils/ciAxios";
 import { toastClear, toastError, toastPromise } from "../../utils/toast";

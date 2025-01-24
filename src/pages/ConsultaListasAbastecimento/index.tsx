@@ -2,7 +2,7 @@ import style from "./index.module.css";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FaPrint, FaRegPenToSquare, FaReply } from "react-icons/fa6";
-import { formatDate } from "@/utils/formats";
+import { formatDate, formatHour } from "@/utils/formatDate";
 import { useNavigate } from "react-router-dom";
 import { ciAxios } from "@/utils/ciAxios";
 import { toastPromise } from "@/utils/toast";
@@ -77,7 +77,7 @@ export function ConsultaListasAbastecimento() {
   };
 
   const printTable = () => {
-    setHorario(new Date().toLocaleTimeString());
+    setHorario(formatHour(new Date()));
     setTimeout(() => {
       if (tablePrintRef.current) {
         window.print();
