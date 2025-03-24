@@ -24,7 +24,7 @@ export function ModalReplacePhoto({
       viewWidth={window.innerWidth > 1024 ? 30 : 90}
     >
       <div className={style.containerModal}>
-        <span>Imagem ja cadastrada no sistema</span>
+        <button>Imagem ja cadastrada no sistema</button>
         <img
           src={`http://192.168.100.100:9060/fotos/P${productSelected.CODPRO.replace(
             ".",
@@ -35,7 +35,7 @@ export function ModalReplacePhoto({
           }
           alt="imagem ja cadastrada"
         />
-        <span>Deseja realmente alterar?</span>
+        <button>Deseja realmente alterar?</button>
         <div className={style.modalButtonsContainer}>
           <button onClick={replacePhotoServer}>
             <FaCheck />

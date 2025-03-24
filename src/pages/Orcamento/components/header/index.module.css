@@ -1,0 +1,266 @@
+.headerContainer {
+  width: 26%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  gap: 8px;
+  align-items: center;
+}
+
+.headerContainer footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.headerContainer footer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContainer footer div > div {
+  display: flex;
+  gap: 4px;
+}
+
+.headerContainer footer p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.headerContainer footer input {
+  width: 58px;
+  outline: none;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  text-align: end;
+}
+
+.headerContainer footer button:disabled {
+  filter: brightness(0.8);
+}
+
+.headerButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.clienteVendedor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  background-color: var(--primary-blue);
+  box-shadow: 0px 0px 4px var(--primary-blue);
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  z-index: 2;
+}
+
+.clienteVendedor form {
+  width: 100%;
+}
+
+.clienteVendedor div {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+.clienteVendedor div button {
+  height: 28px;
+  width: 28px;
+  min-width: 28px;
+  padding: 0;
+  background-color: var(--primary-white);
+  cursor: pointer;
+}
+
+.clienteVendedor div svg {
+  fill: var(--primary-blue);
+}
+
+.clienteVendedor div p {
+  color: var(--primary-white);
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: auto;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.clienteVendedor input {
+  height: 28px;
+  width: 60px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.carrinho {
+  width: 100%;
+  display: flex;
+  padding: 8px 8px 6px 8px;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 0px 0px 4px var(--primary-blue);
+  border-radius: 4px;
+  background-color: var(--primary-blue);
+  height: 56vh;
+  min-height: 56vh;
+}
+
+.carrinhoLarge {
+  height: 83vh;
+  min-height: 83vh;
+}
+
+.carrinho .buttonsContainer button:last-child {
+  width: 70%;
+}
+
+.carrinho .buttonsContainer button:nth-child(1),
+.carrinho .buttonsContainer button:nth-child(2) {
+  background-color: var(--primary-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrinho .buttonsContainer button:nth-child(1) svg,
+.carrinho .buttonsContainer button:nth-child(2) svg {
+  fill: var(--primary-blue);
+}
+
+.carrinho ul {
+  min-height: 45%;
+  max-height: 45%;
+  overflow-y: scroll;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--primary-white);
+}
+
+.carrinhoLarge ul {
+  min-height: 62%;
+  max-height: 62%;
+}
+
+.carrinho ul li p {
+  color: var(--primary-white);
+}
+
+ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: var(--primary-blue);
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: var(--primary-white);
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-white);
+}
+
+.carrinho ul li {
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.carrinho ul li:hover {
+  background-color: var(--primary-white);
+}
+
+.carrinho ul li:hover p {
+  color: var(--primary-blue);
+}
+
+.carrinho ul li p {
+  font-size: 12px;
+}
+
+.carrinho ul li button:first-child {
+  padding: 6px;
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+.carrinho ul li > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
+
+.carrinho ul li > div > p {
+  font-weight: 700;
+}
+
+.carrinho ul li > div > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carrinho p {
+  color: var(--primary-white);
+}
+
+.carrinho h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--primary-white);
+}
+
+.informacoesExtras {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--primary-blue);
+  box-shadow: 0px 0px 4px var(--primary-blue);
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+}
+
+.informacoesExtras h3 {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--primary-white);
+}
+
+.informacoesExtras textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  resize: none;
+  background-color: #fff;
+  font-weight: 900;
+  color: var(--primary-red);
+  padding: 6px;
+  border-radius: 4px;
+  min-height: 12vh;
+}

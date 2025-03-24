@@ -151,75 +151,90 @@ export function SectionValidadeProdutos({
       <Modal
         setVisibility={setModalPhotoVisibility}
         visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imageValidadeProdutosSrc && (
-          <img
-            loading="lazy"
-            src={imageValidadeProdutosSrc}
-            alt="imagem capturada"
-          />
-        )}
-        {videoValidadeProdutosSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoValidadeProdutosSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label
-            htmlFor="file-photo"
-            onClick={() => setModalPhotoVisibility(true)}
-          >
-            Capturar foto
-          </label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imageValidadeProdutosSrc || videoValidadeProdutosSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imageValidadeProdutosSrc) {
+                    setImagesValidadeProdutosSrc([
+                      ...imagesValidadeProdutosSrc,
+                      imageValidadeProdutosSrc,
+                    ]);
+                    setImageValidadeProdutosSrc("");
+                  } else {
+                    setVideosValidadeProdutosSrc([
+                      ...videosValidadeProdutosSrc,
+                      videoValidadeProdutosSrc,
+                    ]);
+                    setVideoValidadeProdutosSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImageValidadeProdutosSrc("");
+                  setVideoValidadeProdutosSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-validade">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-validade"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-validade">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-validade"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imageValidadeProdutosSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesValidadeProdutosSrc([
-                  ...imagesValidadeProdutosSrc,
-                  imageValidadeProdutosSrc,
-                ]);
-                setImageValidadeProdutosSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imageValidadeProdutosSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoValidadeProdutosSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosValidadeProdutosSrc([
-                  ...videosValidadeProdutosSrc,
-                  videoValidadeProdutosSrc,
-                ]);
-                setVideoValidadeProdutosSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoValidadeProdutosSrc} />
+            </video>
           )}
         </div>
       </Modal>
@@ -295,7 +310,7 @@ export function SectionValidadeProdutos({
           <div className={style.validadeContainer}>
             <div>
               <InputMask
-                mask={"_._"}
+                mask={"____.____"}
                 replacement={{ _: /\d/ }}
                 className={style.validadeProdutoInput}
                 type="tel"
@@ -314,7 +329,7 @@ export function SectionValidadeProdutos({
             </div>
             <div>
               <InputMask
-                mask={"_._"}
+                mask={"____.____"}
                 replacement={{ _: /\d/ }}
                 className={style.validadeProdutoInput}
                 type="tel"

@@ -13,14 +13,18 @@ interface Product {
   PESOL?: number;
   OBS?: string;
   SALDO?: number;
+  SALDO_PRE?: number;
   SALDO_1?: number;
   SALDO_3?: number;
   ULT_COMPRA?: string;
+  ULT_COMPRA_PRE?: string;
   QTD_ULT_COMPRA?: number;
   VENDA_ULT_COMPRA?: number;
   PEREQUE?: {
     SALDO: number;
+    SALDO_PRE: number;
     ULT_COMPRA?: string;
+    ULT_COMPRA_PRE?: string;
     QTD_ULT_COMPRA?: number;
     VENDA_ULT_COMPRA?: number;
   };
@@ -28,6 +32,10 @@ interface Product {
 }
 
 interface ProductList extends Product {
+  QTD: number;
+}
+
+interface ProductStore extends Product {
   QTD: number;
 }
 
@@ -121,6 +129,34 @@ interface Vendedor {
   NOME: string;
 }
 
+interface OrcamentoGenerateResponse {
+  register: [
+    {
+      NUMCONT: number;
+    }
+  ];
+}
+
+interface OrcamentoProductsCabecalhoResponse {
+  cabecalho:
+    | {
+        PDESC?: number;
+        TOTDESC?: number;
+        TOTDOC?: number;
+      }
+    | undefined;
+  produtos:
+    | [
+        {
+          CODPRO: string;
+          QTDADE: number;
+          VRUNIT: number;
+          DESCR: string;
+        }
+      ]
+    | undefined;
+}
+
 export type {
   BalanceProductResponse,
   BalanceProduct,
@@ -132,4 +168,7 @@ export type {
   Firma,
   Vendedor,
   ProductComplementarResponse,
+  ProductStore,
+  OrcamentoGenerateResponse,
+  OrcamentoProductsCabecalhoResponse,
 };

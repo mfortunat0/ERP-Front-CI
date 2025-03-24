@@ -1,8 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
 import style from "./index.module.css";
+import { ChangeEvent, useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { List, ListItem } from "../../interfaces";
-
 import { FaPrint } from "react-icons/fa6";
 import { v4 as uuid } from "uuid";
 import { ciAxios } from "../../utils/ciAxios";
@@ -16,7 +15,7 @@ export function ImprimirEtiquetas() {
   const codfir = localStorage.getItem("codfir");
 
   const date = new Date();
-  const days30Ago = new Date(date.getTime() - 30 * 24 * 60 * 60 * 1000);
+  const days30Ago = new Date(date.getTime() - 3 * 24 * 60 * 60 * 1000);
 
   const onSelectedList = async (codlistc: number) => {
     const url = `${import.meta.env.VITE_SERVER_NODE_URL}/movlist/detalhes`;
@@ -91,287 +90,294 @@ export function ImprimirEtiquetas() {
       "input[type='checkbox']:checked"
     );
 
-    const page = window.open();
     let script = "";
 
     let body = `
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
-        <style>
-          @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
+            <style>
+              @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Roboto", sans-serif;
+              }
+        
+              .A4 {
+                width: 100%;
+                height: 1123px;
+                max-height: 1123px;
+                min-height: 1123px;
+                border: 4px solid black;
+                padding: 51px 14px 0px 16px;
+                flex-basis: 200px;
+              }
+        
+              .container {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                ${
+                  typeEtiqueta === "etiqueta amarela"
+                    ? "flex-direction: column;"
+                    : ""
+                }
+              }
+        
+              img {
+                height: 160px;
+                width: 160px;
+              }
+        
+              h1 {
+                text-align: center;
+                font-size: 40px;
+              }
+        
+              .local {
+                font-size: 12px;
+              }
+        
+              .row {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+              }
+        
+              .estoqueContainer .rowContainer {
+                display: flex;
+                width: 100%;
+              }
+              
+              .etiquetaAmarelaContainer {
+                width: 264px;
+                height: 112px;
+                min-height: 112px;
+                max-height: 112px;
+                padding: 4px 0px 0px 26px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+              }
     
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
-          }
+              .etiquetaAmarelaContainer h2{
+                font-weight: 300;
+                font-size: 17.5px;
+                text-align: center;
+                line-height: 16px;
+              }
     
-          .A4 {
-            width: 100%;
-            height: 1123px;
-            max-height: 1123px;
-            min-height: 1123px;
-            border: 4px solid black;
-            padding: 51px 14px 0px 16px;
-            flex-basis: 200px;
-          }
+              .rowEtiquetaAmarelaContainer {
+                display: flex;
+                width: 100%;
+                height: 22px;
+                z-index: -999;
+              }
     
-          .container {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            ${
-              typeEtiqueta === "etiqueta amarela"
-                ? "flex-direction: column;"
-                : ""
-            }
-          }
+              .rowEtiquetaAmarelaContainer div{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+              }
+              
+              .etiquetaAmarelaContainer h1{
+                text-align: center;
+                font-size: 32px;
+                line-height: 22px
+              }
     
-          img {
-            height: 160px;
-            width: 160px;
-          }
+              .etiquetaGrandeContainer {
+                width: 48%;
+                padding: 8px;
+                height: 260px;
+                min-height: 256px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 2px;
+                gap: 2px;
+                border: 1px solid black;
+              }
+        
+              .etiquetaGrandeContainer h2 {
+                font-size: 28px;
+                text-align: center;
+                font-weight: 500;
+              }
     
-          h1 {
-            text-align: center;
-            font-size: 40px;
-          }
+              .etiquetaGrandeContainer h1{
+                text-align: center;
+                font-size: 56px;
+              }
     
-          .local {
-            font-size: 12px;
-          }
+              .etiquetaGrandeContainer h3{
+                position: relative;
+                top: 10px;
+              }
     
-          .row {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-          }
+              .etiquetaGrandeContainer h4{
+                text-align: center;
+                font-weight: 500;
+                font-size: 20px;
+              }
+        
+              .etiquetaGrandeContainer .rowRight .codpro {
+                font-size: 20px;
+              }
     
-          .estoqueContainer .rowContainer {
-            display: flex;
-            width: 100%;
-          }
-          
-          .etiquetaAmarelaContainer {
-            width: 264px;
-            height: 112px;
-            min-height: 112px;
-            max-height: 112px;
-            padding: 4px 0px 0px 26px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-          }
-
-          .etiquetaAmarelaContainer h2{
-            font-weight: 300;
-            font-size: 17.5px;
-            text-align: center;
-            line-height: 16px;
-          }
-
-          .rowEtiquetaAmarelaContainer {
-            display: flex;
-            width: 100%;
-            height: 22px;
-            z-index: -999;
-          }
-
-          .rowEtiquetaAmarelaContainer div{
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-          }
-          
-          .etiquetaAmarelaContainer h1{
-            text-align: center;
-            font-size: 32px;
-            line-height: 22px
-          }
-
-          .etiquetaGrandeContainer {
-            width: 48%;
-            padding: 8px;
-            height: 260px;
-            min-height: 256px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 2px;
-            gap: 2px;
-            border: 1px solid black;
-          }
+              .etiquetaGrandeContainer .rowContainer{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+              }
     
-          .etiquetaGrandeContainer h2 {
-            font-size: 28px;
-            text-align: center;
-            font-weight: 500;
-          }
-
-          .etiquetaGrandeContainer h1{
-            text-align: center;
-            font-size: 56px;
-          }
-
-          .etiquetaGrandeContainer h3{
-            position: relative;
-            top: 10px;
-          }
-
-          .etiquetaGrandeContainer h4{
-            text-align: center;
-            font-weight: 500;
-            font-size: 20px;
-          }
+              .etiquetaGrandeContainer footer{
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+              }
+        
+              .rowRight {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 68%;
+                padding: 8px;
+              }
+        
+              .rowRight div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+              }
+        
+              .estoqueContainer .rowContainer img {
+                width: 32%;
+              }
+        
+              .estoqueContainer {
+                width: 50%;
+                padding: 8px;
+                height: 256px;
+                min-height: 256px;
+                max-height: 256px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 2px;
+              }
+        
+              .estoqueContainer h2 {
+                font-size: 22px;
+                text-align: center;
+                font-weight: 500;
+              }
+        
+              .estoqueContainer .rowRight .local {
+                font-size: 16px;
+              }
+        
+              .estoqueContainer .rowRight .codpro {
+                font-size: 20px;
+              }
+        
+              .precoContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 50%;
+                height: 256px;
+                min-height: 256px;
+                max-height: 256px;
+                padding: 8px;
+                border: 1px solid #111;
+              }
+        
+              .precoContainer h2 {
+                font-size: 24px;
+                text-align: center;
+                font-weight: 500;
+              }
+        
+              .precoContainer h1 {
+                text-align: center;
+                font-size: 54px;
+                display: inline-block;
+              }
+        
+              .precoContainer h3 {
+                position: relative;
+                top: 12px;
+              }
+        
+              .precoContainer .rowPreco {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+              }
+        
+              .precoContainer .rowRight .local {
+                font-size: 14px;
+              }
+        
+              .precoContainer .rowRight .codpro {
+                font-size: 16px;
+              }
+        
+              .precoContainer .row {
+                justify-content: space-evenly;
+              }
+        
+              .precoContainer .footer {
+                display: flex;
+                justify-content: center;
+              }
+        
+              .precoContainer .footer p {
+                font-size: 18px;
+              }
     
-          .etiquetaGrandeContainer .rowRight .codpro {
-            font-size: 20px;
-          }
-
-          .etiquetaGrandeContainer .rowContainer{
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            width: 100%;
-          }
-
-          .etiquetaGrandeContainer footer{
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-          }
-    
-          .rowRight {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 68%;
-            padding: 8px;
-          }
-    
-          .rowRight div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-          }
-    
-          .estoqueContainer .rowContainer img {
-            width: 32%;
-          }
-    
-          .estoqueContainer {
-            width: 50%;
-            padding: 8px;
-            height: 256px;
-            min-height: 256px;
-            max-height: 256px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 2px;
-          }
-    
-          .estoqueContainer h2 {
-            font-size: 22px;
-            text-align: center;
-            font-weight: 500;
-          }
-    
-          .estoqueContainer .rowRight .local {
-            font-size: 16px;
-          }
-    
-          .estoqueContainer .rowRight .codpro {
-            font-size: 20px;
-          }
-    
-          .precoContainer {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 50%;
-            height: 256px;
-            min-height: 256px;
-            max-height: 256px;
-            padding: 8px;
-            border: 1px solid #111;
-          }
-    
-          .precoContainer h2 {
-            font-size: 24px;
-            text-align: center;
-            font-weight: 500;
-          }
-    
-          .precoContainer h1 {
-            text-align: center;
-            font-size: 54px;
-            display: inline-block;
-          }
-    
-          .precoContainer h3 {
-            position: relative;
-            top: 12px;
-          }
-    
-          .precoContainer .rowPreco {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-          }
-    
-          .precoContainer .rowRight .local {
-            font-size: 14px;
-          }
-    
-          .precoContainer .rowRight .codpro {
-            font-size: 16px;
-          }
-    
-          .precoContainer .row {
-            justify-content: space-evenly;
-          }
-    
-          .precoContainer .footer {
-            display: flex;
-            justify-content: center;
-          }
-    
-          .precoContainer .footer p {
-            font-size: 18px;
-          }
-
-          button{
-            padding: 16px;
-            font-size: 16px;
-            margin: 16px;
-          }
-    
-          @media print {
-            button {
-              display: none;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <main>
-          <button onclick="window.print()">Imprimir</button>
-          ${typeEtiqueta === "estoque" ? `<section class="A4">` : ""}
-          ${typeEtiqueta === "etiqueta grande" ? `<section class="A4">` : ""}
-          <div class="container">
-    `;
+              button{
+                padding: 16px;
+                font-size: 16px;
+                margin: 16px;
+                cursor: pointer;
+                background-color: #2596be;
+                color: #ffffff;
+                outline: none;
+                border-radius: 4px;
+                border: none;
+              }
+        
+              @media print {
+                button {
+                  display: none;
+                }
+              }
+            </style>
+          </head>
+          <body>
+            <main>
+              <button onclick="window.print()">Imprimir</button>
+              ${typeEtiqueta === "estoque" ? `<section class="A4">` : ""}
+              ${
+                typeEtiqueta === "etiqueta grande" ? `<section class="A4">` : ""
+              }
+              <div class="container">
+        `;
 
     let cont = 1;
     if (listDetails) {
@@ -403,80 +409,80 @@ export function ImprimirEtiquetas() {
               .replace(".", ",");
 
             script += `
-              JsBarcode("#${svgId}", "${ean}", {
-                ${typeEtiqueta === "etiqueta amarela" ? "height: 8," : ""}
-                ${typeEtiqueta === "etiqueta grande" ? "height: 16," : ""}
-                ${typeEtiqueta === "estoque" ? "height: 30," : ""}
-                width: 1,
-                ${typeEtiqueta === "etiqueta amarela" ? "fontSize: 12" : ""}
-                ${typeEtiqueta === "etiqueta grande" ? "fontSize: 12" : ""}
-                ${typeEtiqueta === "estoque" ? "fontSize: 14" : ""}
-              })
-            `;
+                  JsBarcode("#${svgId}", "${ean}", {
+                    ${typeEtiqueta === "etiqueta amarela" ? "height: 8," : ""}
+                    ${typeEtiqueta === "etiqueta grande" ? "height: 16," : ""}
+                    ${typeEtiqueta === "estoque" ? "height: 30," : ""}
+                    width: 1,
+                    ${typeEtiqueta === "etiqueta amarela" ? "fontSize: 12" : ""}
+                    ${typeEtiqueta === "etiqueta grande" ? "fontSize: 12" : ""}
+                    ${typeEtiqueta === "estoque" ? "fontSize: 14" : ""}
+                  })
+                `;
             if (typeEtiqueta === "estoque") {
               body += `
-              <div class="estoqueContainer">
-                <div class="rowContainer">
-                  <img loading="lazy" src="${imgSrc}" alt=""/>
-                  <div class="rowRight">
-                    <div>
+                  <div class="estoqueContainer">
+                    <div class="rowContainer">
+                      <img loading="lazy" src="${imgSrc}" alt=""/>
+                      <div class="rowRight">
+                        <div>
+                          <p class="codpro">${codpro}</p>
+                          <svg id="${svgId}"></svg>
+                        </div>
+                        <p class="local">Local: ${local}</p>
+                      </div>
+                    </div>
+                    <h2>${desc}</h2>
+                  </div>
+                  ${
+                    cont % 8 === 0
+                      ? `
+                  </div>
+                  </section>
+                  <section class="A4">
+                  <div class="container">
+                  `
+                      : ""
+                  }
+                  `;
+            } else if (typeEtiqueta === "etiqueta grande") {
+              body += `
+                  <div class="etiquetaGrandeContainer">
+                    <div class="rowContainer">
                       <p class="codpro">${codpro}</p>
                       <svg id="${svgId}"></svg>
                     </div>
-                    <p class="local">Local: ${local}</p>
+                    <h2>${desc}</h2>
+                    <footer>
+                      <h1>R$ ${vrVendaFormatted}</h1>
+                      <h3>/ ${coduni}</h3>
+                    </footer>
+                    <h4>à vista 5%</h4>
                   </div>
-                </div>
-                <h2>${desc}</h2>
-              </div>
-              ${
-                cont % 8 === 0
-                  ? `
-              </div>
-              </section>
-              <section class="A4">
-              <div class="container">
-              `
-                  : ""
-              }
-              `;
-            } else if (typeEtiqueta === "etiqueta grande") {
-              body += `
-              <div class="etiquetaGrandeContainer">
-                <div class="rowContainer">
-                  <p class="codpro">${codpro}</p>
-                  <svg id="${svgId}"></svg>
-                </div>
-                <h2>${desc}</h2>
-                <footer>
-                  <h1>R$ ${vrVendaFormatted}</h1>
-                  <h3>/ ${coduni}</h3>
-                </footer>
-                <h4>à vista 5%</h4>
-              </div>
-              ${
-                cont % 8 === 0
-                  ? `
-              </div>
-              </section>
-              <section class="A4">
-              <div class="container">
-              `
-                  : ""
-              }
-              `;
+                  ${
+                    cont % 8 === 0
+                      ? `
+                  </div>
+                  </section>
+                  <section class="A4">
+                  <div class="container">
+                  `
+                      : ""
+                  }
+                  `;
             } else if (typeEtiqueta === "etiqueta amarela") {
               body += `
-              <div class="etiquetaAmarelaContainer">
-                <div class="rowEtiquetaAmarelaContainer">
-                  <div>
-                    <p class="codpro">${codpro}</p>
-                    <svg id="${svgId}"></svg>
+                  <div class="etiquetaAmarelaContainer">
+                    <div class="rowEtiquetaAmarelaContainer">
+                      <div>
+                        <p class="codpro">${codpro}</p>
+                        <svg id="${svgId}"></svg>
+                      </div>
+                    </div>
+                    <h2>${desc}</h2>
+                    <h1>R$ ${vrVendaFormatted}</h1>
                   </div>
-                </div>
-                <h2>${desc}</h2>
-                <h1>R$ ${vrVendaFormatted}</h1>
-              </div>
-              `;
+                  `;
             }
             cont++;
           }
@@ -485,20 +491,21 @@ export function ImprimirEtiquetas() {
     }
 
     script += `
-    window.onafterprint = () => {
-      close()
-    }
-    `;
+        window.onafterprint = () => {
+          close()
+        }
+        `;
 
     body += `
-        </section>
-        <script>
-          ${script}
-        </script>
-      </main>
-    </body>
-  </html>    
-    `;
+            </section>
+            <script>
+              ${script}
+            </script>
+          </main>
+        </body>
+      </html>    
+        `;
+    const page = window.open();
     page?.document.write(body);
   };
 
@@ -579,7 +586,14 @@ export function ImprimirEtiquetas() {
               <option value="etiqueta amarela">Etiqueta amarela</option>
               <option value="etiqueta grande">Etiqueta grande</option>
             </select>
-            <button onClick={print}>
+            <button
+              onClick={() => {
+                toastPromise({
+                  pendingMessage: "Gerando impressão",
+                  asyncFunction: print(),
+                });
+              }}
+            >
               Imprimir <FaPrint />
             </button>
           </footer>

@@ -36,6 +36,10 @@
   min-height: 36px;
 }
 
+.navContainer div button:first-child {
+  max-width: 120px;
+}
+
 .navContainer div span {
   height: 38px;
   max-height: 38px;

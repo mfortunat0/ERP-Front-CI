@@ -59,75 +59,90 @@ export function SectionOrganizacao({
       <Modal
         setVisibility={setModalPhotoVisibility}
         visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imageOrganizacaoSrc && (
-          <img
-            loading="lazy"
-            src={imageOrganizacaoSrc}
-            alt="imagem capturada"
-          />
-        )}
-        {videoOrganizacaoSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoOrganizacaoSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label
-            htmlFor="file-photo"
-            onClick={() => setModalPhotoVisibility(true)}
-          >
-            Capturar foto
-          </label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imageOrganizacaoSrc || videoOrganizacaoSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imageOrganizacaoSrc) {
+                    setImagesOrganizacaoSrc([
+                      ...imagesOrganizacaoSrc,
+                      imageOrganizacaoSrc,
+                    ]);
+                    setImageOrganizacaoSrc("");
+                  } else {
+                    setVideosOrganizacaoSrc([
+                      ...videosOrganizacaoSrc,
+                      videoOrganizacaoSrc,
+                    ]);
+                    setVideoOrganizacaoSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImageOrganizacaoSrc("");
+                  setVideoOrganizacaoSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-organizacao">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-organizacao"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-organizacao">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-organizacao"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imageOrganizacaoSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesOrganizacaoSrc([
-                  ...imagesOrganizacaoSrc,
-                  imageOrganizacaoSrc,
-                ]);
-                setImageOrganizacaoSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imageOrganizacaoSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoOrganizacaoSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosOrganizacaoSrc([
-                  ...videosOrganizacaoSrc,
-                  videoOrganizacaoSrc,
-                ]);
-                setVideoOrganizacaoSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoOrganizacaoSrc} />
+            </video>
           )}
         </div>
       </Modal>

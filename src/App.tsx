@@ -65,7 +65,7 @@ export function App() {
           <img loading="lazy" className={style.logo} src={logoUrl} alt="Logo" />
         </a>
         <div>
-          <span onClick={logout}>{nome}</span>
+          <button onClick={logout}>{nome}</button>
           <button onClick={goHome}>
             <FaHouse />
           </button>

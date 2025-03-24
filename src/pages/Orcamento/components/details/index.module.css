@@ -1,0 +1,265 @@
+.detailsContainer {
+  width: 26%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 44px;
+  border-radius: 4px;
+  height: 100%;
+  z-index: 2;
+}
+
+.detailsContainer p {
+  color: var(--primary-white);
+}
+
+.detailsContainer h2,
+.detailsContainer h3 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--primary-white);
+}
+
+.detailsContainer {
+  align-items: center;
+  margin-left: auto;
+}
+
+.detailsContainer header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-bottom: 8px;
+  padding: 8px 8px 6px 8px;
+  background-color: var(--primary-blue);
+  box-shadow: 0px 0px 4px var(--primary-blue);
+}
+
+.detailsContainer img {
+  width: 140px;
+  height: 140px;
+  border-radius: 4px;
+}
+
+.detailsContainer h3 {
+  font-size: 18px;
+}
+
+.detailsContainer header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.detailsContainer header div div {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.detailsContainer div p {
+  font-weight: 500;
+}
+
+.detailsContainer p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.detailsContainer textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  resize: none;
+  background-color: var(--primary-white);
+  color: var(--primary-red);
+  padding: 6px;
+  border: 1px solid var(--primary-white);
+  border-radius: 2px;
+  font-weight: 900;
+  height: 10vh;
+}
+.detailsContainer textarea::-webkit-scrollbar {
+  width: 2px;
+}
+
+.detailsContainer textarea::-webkit-scrollbar-track {
+  background: var(--primary-blue);
+}
+
+.detailsContainer textarea::-webkit-scrollbar-thumb {
+  border-radius: 25%;
+  background: var(--primary-white);
+}
+
+.detailsContainer textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-white);
+}
+
+.detailsContainer footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.detailsContainer footer > button {
+  width: 40px;
+  margin-left: auto;
+  z-index: 999;
+}
+
+.detailsContainer footer > button svg {
+  fill: var(--primary-blue);
+}
+
+.detailsContainer footer h4 {
+  color: var(--primary-black);
+  text-align: center;
+  width: 100%;
+}
+
+.detailsContainer footer h5 {
+  color: var(--primary-white);
+}
+
+.detailsContainer .fichaAnalitica {
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  gap: 8px;
+  flex-direction: column;
+  background-color: var(--primary-blue);
+  padding: 4px;
+}
+
+.detailsContainer .fichaAnalitica div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.detailsContainer .fichaAnalitica div:last-child {
+  justify-content: center;
+  gap: 16px;
+}
+
+.detailsContainer .fichaAnaliticaButton {
+  position: absolute;
+  right: 16px;
+  background-color: var(--primary-white);
+  z-index: 999;
+}
+
+.detailsContainer .fichaAnaliticaButton svg {
+  fill: var(--primary-blue);
+}
+
+.detailsContainer footer p {
+  color: var(--primary-black);
+  font-weight: 500;
+}
+
+.detailsContainer footer table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--primary-white);
+}
+
+.detailsContainer footer button:first-child {
+  background-color: #fff;
+  color: var(--primary-blue);
+}
+
+.detailsContainer footer table th,
+.detailsContainer footer table td {
+  font-size: 14px;
+  color: var(--primary-black);
+  text-align: left;
+  padding: 4px 6px;
+  font-weight: 700;
+}
+
+.detailsContainer footer table td {
+  color: var(--primary-white);
+}
+
+.detailsContainer footer table td:nth-child(2),
+.detailsContainer footer table td:nth-child(4),
+.detailsContainer footer table td:nth-child(5) {
+  text-align: center;
+}
+
+.detailsContainer footer table tbody tr {
+  background-color: var(--primary-black);
+}
+
+.produtoSemelhantesContainer {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--primary-orange-dark);
+  padding: 8px;
+  border-radius: 0px 0px 2px 2px;
+  box-shadow: 0px 0px 4px var(--primary-orange-dark);
+}
+
+.produtoSemelhantesContainer img {
+  width: 98px;
+  height: 98px;
+  cursor: pointer;
+}
+
+.produtoSemelhantesContainer h5 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.produtoSemelhantesContainer div {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  justify-content: space-between;
+}
+
+.produtoSemelhantesContainer .dados {
+  justify-content: space-between;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+.produtoSemelhantesContainer .barato {
+  background-color: var(--primary-green);
+}
+.produtoSemelhantesContainer .caro {
+  background-color: var(--primary-red);
+}
+
+.produtoSemelhantesContainer div p {
+  color: var(--primary-white);
+}
+
+.produtoSemelhantesContainer .formulario {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 4px;
+}
+
+.produtoSemelhantesContainer .formulario input {
+  height: 38px;
+  width: 70px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}

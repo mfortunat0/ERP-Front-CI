@@ -40,7 +40,8 @@
 
 .tableWrapper .tableFixHead {
   overflow: auto;
-  height: 100px;
+  min-height: 32px;
+  max-height: 32px;
 }
 
 .tableWrapper .tableFixHead thead th {
@@ -69,6 +70,8 @@
   text-align: start;
   color: var(--primary-white);
   background-color: var(--primary-blue);
+  min-height: 32px;
+  max-height: 32px;
 }
 
 .imprimirEtiquetasContainer table tbody td {

@@ -76,28 +76,6 @@
   cursor: pointer;
 }
 
-.modalPhoto {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  border-radius: 4px;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 90%;
-  max-width: 380px;
-  height: 76%;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--primary-white);
-  outline: none;
-  z-index: 999;
-}
-
 .modalHeader {
   display: flex;
   width: 100%;
@@ -109,9 +87,19 @@
   font-size: 12px;
 }
 
-.modalPhoto img {
+.modalContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.modalPhoto,
+.modalVideo {
   width: 90%;
-  height: 76%;
+  height: 78%;
+  margin-top: 16px;
+  border-radius: 2px;
 }
 
 .buttonsContainer {

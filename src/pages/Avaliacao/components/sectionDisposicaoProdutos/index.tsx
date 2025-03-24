@@ -1,5 +1,5 @@
-import { Modal } from "@/components/modal";
 import style from "./index.module.css";
+import { Modal } from "@/components/modal";
 import { ChangeEvent, useState } from "react";
 import { FaRegStar, FaStar, FaX } from "react-icons/fa6";
 
@@ -60,72 +60,92 @@ export function SectionDisposicaoProdutos({
   return (
     <section>
       <Modal
-        visibility={modalPhotoVisibility}
         setVisibility={setModalPhotoVisibility}
+        visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imageDisposicaoProdutosSrc && (
-          <img
-            loading="lazy"
-            src={imageDisposicaoProdutosSrc}
-            alt="imagem capturada"
-          />
-        )}
-        {videoDisposicaoProdutosSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoDisposicaoProdutosSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label htmlFor="file-photo">Capturar foto</label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imageDisposicaoProdutosSrc || videoDisposicaoProdutosSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imageDisposicaoProdutosSrc) {
+                    setImagesDisposicaoProdutosSrc([
+                      ...imagesDisposicaoProdutosSrc,
+                      imageDisposicaoProdutosSrc,
+                    ]);
+                    setImageDisposicaoProdutosSrc("");
+                  } else {
+                    setVideosDisposicaoProdutosSrc([
+                      ...videosDisposicaoProdutosSrc,
+                      videoDisposicaoProdutosSrc,
+                    ]);
+                    setVideoDisposicaoProdutosSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImageDisposicaoProdutosSrc("");
+                  setVideoDisposicaoProdutosSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-disposicao">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-disposicao"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-disposicao">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-disposicao"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imageDisposicaoProdutosSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesDisposicaoProdutosSrc([
-                  ...imagesDisposicaoProdutosSrc,
-                  imageDisposicaoProdutosSrc,
-                ]);
-                setImageDisposicaoProdutosSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imageDisposicaoProdutosSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoDisposicaoProdutosSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosDisposicaoProdutosSrc([
-                  ...videosDisposicaoProdutosSrc,
-                  videoDisposicaoProdutosSrc,
-                ]);
-                setVideoDisposicaoProdutosSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoDisposicaoProdutosSrc} />
+            </video>
           )}
         </div>
       </Modal>

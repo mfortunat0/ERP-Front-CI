@@ -1,17 +1,17 @@
 import style from "./index.module.css";
 import { CardItem } from "@/components/cardItem";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-
+import { BalanceProductResponse, Product } from "@/interfaces";
+import { Link } from "react-router-dom";
+import { ciAxios } from "@/utils/ciAxios";
+import { toastError, toastPromise } from "@/utils/toast";
 import {
   FaClipboardList,
   FaEraser,
   FaMagnifyingGlass,
   FaX,
 } from "react-icons/fa6";
-import { BalanceProductResponse, Product } from "../../interfaces";
-import { Link } from "react-router-dom";
-import { ciAxios } from "../../utils/ciAxios";
-import { toastError, toastPromise } from "../../utils/toast";
+import { blurAllInputs } from "@/utils/blurInputs";
 
 interface Item {
   name: string;
@@ -191,6 +191,7 @@ export function NovaListaAbastecimento() {
         }
       }
       setIsLoading(false);
+      blurAllInputs();
     }
   };
 
@@ -280,28 +281,28 @@ export function NovaListaAbastecimento() {
     const { codpro, un, qtd, saldo } = item;
     const url = `${import.meta.env.VITE_SERVER_NODE_URL}/movlist/inserir`;
 
-    const { data } = await toastPromise({
-      asyncFunction: ciAxios.post(url, {
-        codlistc,
-        codpro,
-        un,
-        qtd: String(qtd),
-        saldo,
-      }),
-      pendingMessage: "Enviando",
-      onSucess: `Produto ${codpro} enviado com sucesso`,
-      onError: {
-        render() {
-          setTimeout(() => {
-            sendItemToServer({ item, list });
-          }, 3000);
-          return "Falha na conexão";
-        },
-      },
-    });
+    try {
+      const { data } = await toastPromise({
+        asyncFunction: ciAxios.post(url, {
+          codlistc,
+          codpro,
+          un,
+          qtd: String(qtd),
+          saldo,
+        }),
+        pendingMessage: "Enviando",
+        onSucess: `Produto ${codpro} enviado com sucesso`,
+        onError: "Falha na conexão",
+      });
 
-    item.codlisti = data.codlisti;
-    setItensList(list);
+      item.codlisti = data.codlisti;
+      setItensList(list);
+    } catch (error) {
+      console.log(error);
+      setTimeout(() => {
+        sendItemToServer({ item, list });
+      }, 3000);
+    }
   };
 
   const removeItemFromList = async (item: Item) => {

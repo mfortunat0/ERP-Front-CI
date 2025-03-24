@@ -1,0 +1,251 @@
+.formContainer {
+  z-index: 1;
+  width: 48%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formContainer > form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 8px;
+}
+
+.formContainer > form input {
+  height: 36px;
+  width: 50%;
+  border: 1px solid var(--primary-blue);
+  padding-left: 8px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.formContainer .cardsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.formContainer .cardsContainer::-webkit-scrollbar-track {
+  background: var(--primary-white);
+}
+
+.formContainer .cardsContainer::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+}
+
+.formContainer .cardsContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+.formContainer footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 4px;
+  background-color: var(--primary-green-dark);
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px var(--primary-green-dark);
+}
+
+.formContainer footer h4 {
+  width: 100%;
+  text-align: center;
+  color: var(--primary-white);
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-family: "MarkerFelt";
+}
+
+.formContainer footer img {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formContainer footer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 18%;
+  gap: 4px;
+}
+
+.formContainer footer div p {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary-white);
+  text-align: center;
+}
+
+.formContainer footer div form {
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.formContainer footer div form input {
+  height: 28px;
+  width: 56px;
+  border: 1px solid var(--primary-blue);
+  padding-left: 4px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.formContainer footer div form button {
+  height: 28px;
+  width: 34px;
+}
+
+.cardsContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+  height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: none;
+  border: 2px solid var(--primary-blue);
+  border-radius: 4px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  background-color: var(--primary-blue);
+  padding: 4px;
+  cursor: pointer;
+}
+
+.activeCard {
+  background-color: var(--primary-green-dark);
+}
+
+.activeRow {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.card img {
+  width: 120px;
+  max-height: 120px;
+  border-radius: 4px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--primary-white);
+}
+
+.card .descricaoProduto,
+.card .precoProduto {
+  font-size: 16px;
+}
+
+.card form {
+  display: flex;
+  margin-left: auto;
+  gap: 8px;
+}
+
+.card form input {
+  width: 60px;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.card form button {
+  background-color: #fff;
+  font-size: 18px;
+}
+
+.card form button svg {
+  fill: var(--primary-blue);
+}
+
+.card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card > div > p:first-child {
+  font-weight: 700;
+}
+
+.card div > div {
+  display: flex;
+  gap: 8px;
+}
+
+.tableContainer {
+  width: 46vw;
+  height: 45vh;
+  border: 2px solid var(--primary-blue);
+  border-radius: 4px;
+}
+
+.tableWrapper {
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.tableWrapper .tableFixHead {
+  overflow: auto;
+  height: 34px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableWrapper .tableFixHead thead th {
+  background-color: var(--primary-blue);
+  position: sticky;
+  color: var(--primary-white);
+  top: 0;
+  padding: 4px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.tableWrapper .tableFixHead tbody td:nth-child(5),
+.tableWrapper .tableFixHead tbody td:nth-child(6),
+.tableWrapper .tableFixHead tbody td:nth-child(7) {
+  text-align: center;
+}
+
+.tableWrapper .tableFixHead tbody td {
+  padding: 2px 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tableWrapper .tableFixHead tbody tr {
+  cursor: pointer;
+  border-bottom: 1px solid var(--primary-blue);
+}
+
+.tableWrapper .tableFixHead tbody tr:last-child {
+  border: none;
+}
+
+.tableWrapper input {
+  width: 50px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  border: 1px solid var(--primary-blue);
+  padding: 0 4px;
+}

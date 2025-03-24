@@ -196,75 +196,90 @@ export function SectionPrecificacao({
       <Modal
         setVisibility={setModalPhotoVisibility}
         visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imagePrecificacaoSrc && (
-          <img
-            loading="lazy"
-            src={imagePrecificacaoSrc}
-            alt="imagem capturada"
-          />
-        )}
-        {videoPrecificacaoSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoPrecificacaoSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label
-            htmlFor="file-photo"
-            onClick={() => setModalPhotoVisibility(true)}
-          >
-            Capturar foto
-          </label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imagePrecificacaoSrc || videoPrecificacaoSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imagePrecificacaoSrc) {
+                    setImagesPrecificacaoSrc([
+                      ...imagesPrecificacaoSrc,
+                      imagePrecificacaoSrc,
+                    ]);
+                    setImagePrecificacaoSrc("");
+                  } else {
+                    setVideosPrecificacaoSrc([
+                      ...videosPrecificacaoSrc,
+                      videoPrecificacaoSrc,
+                    ]);
+                    setVideoPrecificacaoSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImagePrecificacaoSrc("");
+                  setVideoPrecificacaoSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-precificacao">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-precificacao"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-precificacao">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-precificacao"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imagePrecificacaoSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesPrecificacaoSrc([
-                  ...imagesPrecificacaoSrc,
-                  imagePrecificacaoSrc,
-                ]);
-                setImagePrecificacaoSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imagePrecificacaoSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoPrecificacaoSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosPrecificacaoSrc([
-                  ...videosPrecificacaoSrc,
-                  videoPrecificacaoSrc,
-                ]);
-                setVideoPrecificacaoSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoPrecificacaoSrc} />
+            </video>
           )}
         </div>
       </Modal>
@@ -333,7 +348,7 @@ export function SectionPrecificacao({
         <div className={style.precificacaoContainer}>
           <div>
             <InputMask
-              mask={"_._"}
+              mask={"____.____"}
               replacement={{ _: /\d/ }}
               className={style.precificacaoProdutoInput}
               type="tel"
@@ -365,7 +380,7 @@ export function SectionPrecificacao({
           </div>
           <div>
             <InputMask
-              mask={"_._"}
+              mask={"____.____"}
               replacement={{ _: /\d/ }}
               className={style.precificacaoProdutoInput}
               placeholder="Produto"

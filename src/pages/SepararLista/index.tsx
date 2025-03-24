@@ -116,7 +116,6 @@ export function SepararLista() {
           visibility={modalPhotoVisibility}
         />
         <ModalInserFalta
-          firma={codfir}
           listFalta={listFalta}
           selectedItemFalta={selectedItemFalta}
           setListFalta={setListFalta}

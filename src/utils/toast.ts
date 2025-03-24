@@ -10,7 +10,7 @@ interface ToastError {
 
 interface ToastPromise<T> {
   asyncFunction: Promise<T>;
-  pendingMessage: string;
+  pendingMessage?: string;
   onSucess?: string | UpdateOptions<T>;
   onError?: string | UpdateOptions;
 }
@@ -44,7 +44,7 @@ export const toastError = ({ message }: ToastError) => {
 export const toastPromise = async <T = unknown>({
   onError = undefined,
   onSucess = undefined,
-  pendingMessage = "",
+  pendingMessage = undefined,
   asyncFunction,
 }: ToastPromise<T>) => {
   const response = await toast.promise<T>(

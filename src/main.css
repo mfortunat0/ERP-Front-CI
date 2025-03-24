@@ -54,8 +54,7 @@ a > button {
 }
 
 button,
-label,
-span {
+label {
   background-color: var(--primary-blue);
   color: white;
   outline: none;
@@ -101,6 +100,15 @@ input[type="number"] {
 
 .greenButton {
   background-color: var(--primary-green);
+}
+
+.whiteButton {
+  background-color: var(--primary-white);
+  color: var(--primary-blue);
+}
+
+.whiteButton svg {
+  fill: var(--primary-blue);
 }
 
 @media (min-width: 368px) {

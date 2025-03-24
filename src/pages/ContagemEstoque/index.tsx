@@ -92,21 +92,29 @@ export function ContagemEstoque() {
     const { codpro, un, qtd, saldo, cadastro } = item;
     const url = `${import.meta.env.VITE_SERVER_NODE_URL}/movlist/inserir`;
 
-    const { data } = await toastPromise({
-      asyncFunction: ciAxios.post(url, {
-        codlistc,
-        codpro,
-        un,
-        qtd: String(qtd),
-        saldo,
-        cadastro,
-      }),
-      pendingMessage: `Enviando`,
-      onSucess: `Produto ${codpro} enviado com sucesso`,
-    });
+    try {
+      const { data } = await toastPromise({
+        asyncFunction: ciAxios.post(url, {
+          codlistc,
+          codpro,
+          un,
+          qtd: String(qtd),
+          saldo,
+          cadastro,
+        }),
+        pendingMessage: `Enviando`,
+        onSucess: `Produto ${codpro} enviado com sucesso`,
+        onError: "Falha na conexão",
+      });
 
-    item.codlisti = data.codlisti;
-    setItensList(list);
+      item.codlisti = data.codlisti;
+      setItensList(list);
+    } catch (error) {
+      console.log(error);
+      setTimeout(() => {
+        sendItemToServer({ item, list });
+      }, 3000);
+    }
   };
 
   const itemIsMissing = (codpro: string) => {

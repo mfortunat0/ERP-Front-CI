@@ -25,10 +25,6 @@
   color: var(--primary-blue);
 }
 
-.listasAbastecimentoContainer .horario {
-  display: none;
-}
-
 .listasAbastecimentoContainer .floatingButtonPrint {
   display: none;
   position: fixed;

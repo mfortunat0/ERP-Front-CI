@@ -16,7 +16,10 @@ export function CardItem({ product, onSelectedProduct }: CardItemProps) {
   return (
     <div
       className={style.cardContainer}
-      onClick={() => onSelectedProduct(product)}
+      onClick={() => {
+        window.scrollTo(0, document.body.scrollHeight);
+        onSelectedProduct(product);
+      }}
     >
       <div className={style.cardImageProfile}>
         <img
@@ -64,7 +67,9 @@ export function CardItem({ product, onSelectedProduct }: CardItemProps) {
           <b>{EAN}</b>
         </p>
         <div>
-          <span>Local {LOCAL || "Não registrado"}</span>
+          <button className="whiteButton">
+            Local {LOCAL || "Não registrado"}
+          </button>
         </div>
       </div>
     </div>

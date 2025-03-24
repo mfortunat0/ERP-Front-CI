@@ -53,7 +53,7 @@ export default function CardItem({
           </div>
           {!!LOCAL && (
             <div>
-              <span
+              <button
                 onClick={() => {
                   if (setModalLocalImage && setLocalProduct) {
                     setLocalProduct(LOCAL);
@@ -62,7 +62,7 @@ export default function CardItem({
                 }}
               >
                 Local {LOCAL}
-              </span>
+              </button>
             </div>
           )}
         </div>

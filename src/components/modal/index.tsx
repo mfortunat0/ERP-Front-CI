@@ -18,7 +18,7 @@ export function Modal({
 }: Modal) {
   const onClickOverlay = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof HTMLElement) {
-      if (event.target.classList[0].includes("overlay")) {
+      if (event.target.classList[0]?.includes("overlay")) {
         setVisibility(false);
       }
     }

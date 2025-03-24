@@ -63,12 +63,16 @@ export function ConsultaProdutos() {
     toastClear();
     try {
       produto.SALDO = 0;
+      produto.SALDO_PRE = 0;
       produto.ULT_COMPRA = "--/--/----";
+      produto.ULT_COMPRA_PRE = "--/--/----";
       produto.QTD_ULT_COMPRA = 0;
       produto.VENDA_ULT_COMPRA = 0;
       produto.PEREQUE = {
         SALDO: 0,
+        SALDO_PRE: 0,
         ULT_COMPRA: "--/--/----",
+        ULT_COMPRA_PRE: "--/--/----",
         VENDA_ULT_COMPRA: 0,
         QTD_ULT_COMPRA: 0,
       };
@@ -90,14 +94,28 @@ export function ConsultaProdutos() {
         saldosCompras.forEach((firmaSaldo) => {
           if (firmaSaldo.CODFIR === 1) {
             produto.SALDO = firmaSaldo.SALDO || 0;
-            produto.ULT_COMPRA = formatDate(firmaSaldo.ULT_COMPRA);
+            produto.ULT_COMPRA =
+              formatDate(firmaSaldo.ULT_COMPRA) || "--/--/----";
             ultCompraItagua = firmaSaldo.ULT_COMPRA?.substring(0, 10);
           } else if (firmaSaldo.CODFIR === 3) {
             produto.PEREQUE = {
+              SALDO_PRE: 0,
               SALDO: firmaSaldo.SALDO,
-              ULT_COMPRA: formatDate(firmaSaldo.ULT_COMPRA),
+              ULT_COMPRA: formatDate(firmaSaldo.ULT_COMPRA) || "--/--/----",
+              ULT_COMPRA_PRE: "--/--/----",
             };
+
             ultCompraPereque = firmaSaldo.ULT_COMPRA?.substring(0, 10);
+          } else if (firmaSaldo.CODFIR === 99) {
+            produto.SALDO_PRE = firmaSaldo.SALDO || 0;
+            produto.ULT_COMPRA_PRE =
+              formatDate(firmaSaldo.ULT_COMPRA) || "--/--/----";
+          } else if (firmaSaldo.CODFIR === 100) {
+            if (produto.PEREQUE) {
+              produto.PEREQUE.SALDO_PRE = firmaSaldo.SALDO || 0;
+              produto.PEREQUE.ULT_COMPRA_PRE =
+                formatDate(firmaSaldo.ULT_COMPRA) || "--/--/----";
+            }
           }
         });
 
@@ -440,7 +458,6 @@ export function ConsultaProdutos() {
           <ModalInserFalta
             setVisibility={setModalFaltaVisibility}
             visibility={modalFaltaVisibility}
-            firma={codfir}
             listFalta={listFalta}
             selectedItemFalta={selectedItemFalta}
             setListFalta={setListFalta}
@@ -692,6 +709,16 @@ export function ConsultaProdutos() {
                       <td>Pereque-Mirim</td>
                       <td>{selectedProduto?.PEREQUE?.SALDO}</td>
                       <td>{selectedProduto?.PEREQUE?.ULT_COMPRA}</td>
+                    </tr>
+                    <tr>
+                      <td>99</td>
+                      <td>{selectedProduto?.SALDO_PRE}</td>
+                      <td>{selectedProduto?.ULT_COMPRA_PRE}</td>
+                    </tr>
+                    <tr>
+                      <td>100</td>
+                      <td>{selectedProduto?.PEREQUE?.SALDO_PRE}</td>
+                      <td>{selectedProduto?.PEREQUE?.ULT_COMPRA_PRE}</td>
                     </tr>
                   </tbody>
                 </table>

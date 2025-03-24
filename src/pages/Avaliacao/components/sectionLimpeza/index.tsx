@@ -59,65 +59,84 @@ export function SectionLimpeza({
       <Modal
         setVisibility={setModalPhotoVisibility}
         visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imageLimpezaSrc && (
-          <img loading="lazy" src={imageLimpezaSrc} alt="imagem capturada" />
-        )}
-        {videoLimpezaSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoLimpezaSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label
-            htmlFor="file-photo"
-            onClick={() => setModalPhotoVisibility(true)}
-          >
-            Capturar foto
-          </label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imageLimpezaSrc || videoLimpezaSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imageLimpezaSrc) {
+                    setImagesLimpezaSrc([...imagesLimpezaSrc, imageLimpezaSrc]);
+                    setImageLimpezaSrc("");
+                  } else {
+                    setVideosLimpezaSrc([...videosLimpezaSrc, videoLimpezaSrc]);
+                    setVideoLimpezaSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImageLimpezaSrc("");
+                  setVideoLimpezaSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-limpeza">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-limpeza"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-limpeza">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-limpeza"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imageLimpezaSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesLimpezaSrc([...imagesLimpezaSrc, imageLimpezaSrc]);
-                setImageLimpezaSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imageLimpezaSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoLimpezaSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosLimpezaSrc([...videosLimpezaSrc, videoLimpezaSrc]);
-                setVideoLimpezaSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoLimpezaSrc} />
+            </video>
           )}
         </div>
       </Modal>
@@ -197,7 +216,7 @@ export function SectionLimpeza({
           {imagesLimpezaSrc.length > 0 &&
             imagesLimpezaSrc.map((image, index) => (
               <div
-                key={index}
+                key={`${index}-image`}
                 style={{
                   position: "relative",
                 }}
@@ -220,7 +239,7 @@ export function SectionLimpeza({
           {videosLimpezaSrc.length > 0 &&
             videosLimpezaSrc.map((video, index) => (
               <div
-                key={index}
+                key={`${index}-video`}
                 style={{
                   position: "relative",
                 }}

@@ -59,71 +59,90 @@ export function SectionEmbalagens({
       <Modal
         setVisibility={setModalPhotoVisibility}
         visibility={modalPhotoVisibility}
+        viewHeight={70}
       >
         <div className={style.modalHeader}>
-          <button onClick={() => setModalPhotoVisibility(false)}>
+          <button
+            className="dangerButton rightButton"
+            onClick={() => setModalPhotoVisibility(false)}
+          >
             <FaX />
           </button>
         </div>
-        {imageEmbalagensSrc && (
-          <img loading="lazy" src={imageEmbalagensSrc} alt="imagem capturada" />
-        )}
-        {videoEmbalagensSrc && (
-          <video width={260} height={260} controls>
-            <source src={videoEmbalagensSrc} />
-          </video>
-        )}
         <div className={style.buttonsContainer}>
-          <label
-            htmlFor="file-photo"
-            onClick={() => setModalPhotoVisibility(true)}
-          >
-            Capturar foto
-          </label>
-          <input
-            type="file"
-            id="file-photo"
-            accept="image/*"
-            capture="environment"
-            onChange={onInputImageChange}
-          />
-          <label htmlFor="file-video">Capturar video</label>
-          <input
-            type="file"
-            id="file-video"
-            accept="video/*"
-            capture="environment"
-            onChange={onInputVideoChange}
-          />
+          {imageEmbalagensSrc || videoEmbalagensSrc ? (
+            <>
+              <button
+                className="greenButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  if (imageEmbalagensSrc) {
+                    setImagesEmbalagensSrc([
+                      ...imagesEmbalagensSrc,
+                      imageEmbalagensSrc,
+                    ]);
+                    setImageEmbalagensSrc("");
+                  } else {
+                    setVideosEmbalagensSrc([
+                      ...videosEmbalagensSrc,
+                      videoEmbalagensSrc,
+                    ]);
+                    setVideoEmbalagensSrc("");
+                  }
+                }}
+              >
+                Salvar
+              </button>
+              <button
+                className="dangerButton"
+                onClick={() => {
+                  setModalPhotoVisibility(false);
+                  setImageEmbalagensSrc("");
+                  setVideoEmbalagensSrc("");
+                }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="file-photo-embalagem">Capturar foto</label>
+              <input
+                type="file"
+                id="file-photo-embalagem"
+                accept="image/*"
+                capture="environment"
+                onChange={onInputImageChange}
+              />
+              <label htmlFor="file-video-embalagem">Capturar video</label>
+              <input
+                type="file"
+                id="file-video-embalagem"
+                accept="video/*"
+                capture="environment"
+                onChange={onInputVideoChange}
+              />
+            </>
+          )}
+        </div>
+        <div className={style.modalContent}>
           {imageEmbalagensSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setImagesEmbalagensSrc([
-                  ...imagesEmbalagensSrc,
-                  imageEmbalagensSrc,
-                ]);
-                setImageEmbalagensSrc("");
-              }}
-            >
-              Salvar
-            </button>
+            <img
+              className={style.modalPhoto}
+              loading="lazy"
+              src={imageEmbalagensSrc}
+              alt="imagem capturada"
+            />
           )}
           {videoEmbalagensSrc && (
-            <button
-              className="greenButton"
-              onClick={() => {
-                setModalPhotoVisibility(false);
-                setVideosEmbalagensSrc([
-                  ...videosEmbalagensSrc,
-                  videoEmbalagensSrc,
-                ]);
-                setVideoEmbalagensSrc("");
-              }}
+            <video
+              className={style.modalVideo}
+              width={260}
+              height={260}
+              controls
             >
-              Salvar
-            </button>
+              <source src={videoEmbalagensSrc} />
+            </video>
           )}
         </div>
       </Modal>

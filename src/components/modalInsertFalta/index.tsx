@@ -8,7 +8,6 @@ interface ModalInserFalta {
   visibility: boolean;
   selectedItemFalta: Product | undefined;
   listFalta: number;
-  firma: string | null;
   setListFalta: (listFalta: number) => void;
   setVisibility: (visibility: boolean) => void;
 }
@@ -19,13 +18,13 @@ export function ModalInserFalta({
   setListFalta,
   setVisibility,
   visibility,
-  firma,
 }: ModalInserFalta) {
+  const firma = localStorage.getItem("codfir");
   return (
     <Modal
       visibility={visibility}
       setVisibility={setVisibility}
-      viewHeight={window.innerWidth > 800 ? 25 : 26}
+      viewHeight={32}
       viewWidth={window.innerWidth > 800 ? 25 : 65}
     >
       <div>

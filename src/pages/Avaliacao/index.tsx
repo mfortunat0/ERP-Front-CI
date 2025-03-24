@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { SectionDisposicaoProdutos } from "./components/sectionDisposicaoProdutos";
 import { SectionEmbalagens } from "./components/sectionEmbalagens";
 import { SectionLimpeza } from "./components/sectionLimpeza";
@@ -474,6 +474,16 @@ export function Avaliacao() {
     }
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <div className={style.avaliacaoContainer}>
       <h2>Avaliação</h2>
@@ -498,12 +508,11 @@ export function Avaliacao() {
           <option value="Nataly-5512997258238">Nataly</option>
           <option value="Lucas-5512991812970">Lucas R</option>
           <option value="Kamilly-5512997060657">Kamilly</option>
-          <option value="Liria-5512996788277">Liria</option>
           <option value="Welligton-5512988483325">Welligton</option>
+          <option value="Joze-5512996306481">Joze Elen</option>
           <option value="Vitoria-5512997666163">Vitoria</option>
-          {/* <option value="Giuliano-5512996778388">Giuliano</option> */}
-          {/* <option value="Isabel-5512991858430">Isabel</option> */}
           <option value="Douglas-5512991665999">Douglas</option>
+          <option value="Pietra-55129922006228">Pietra</option>
           <option value="Jessica-5512997217113">Jessica</option>
         </select>
       </div>
@@ -609,8 +618,8 @@ export function Avaliacao() {
         <button onClick={submitForm}>Enviar avaliação</button>
       </footer>
       <div className={style.backupFooter}>
-        {avaliacoes.map((avaliacao) => (
-          <>
+        {avaliacoes.map((avaliacao, index) => (
+          <div key={`${index}-avaliacao`}>
             <button
               onClick={() => {
                 if (
@@ -625,7 +634,7 @@ export function Avaliacao() {
               {avaliacao.resposavel} - {avaliacao.date}
             </button>
             <br />
-          </>
+          </div>
         ))}
       </div>
     </div>
